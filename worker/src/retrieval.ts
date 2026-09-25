@@ -44,10 +44,20 @@ export async function searchSite(instance: AiSearchInstance, query: string): Pro
     });
 }
 
+// Only a real http(s) URL is a usable "source page link" — a manually
+// uploaded item's storage path (e.g. "caresh-deploy/contact.html") doesn't
+// resolve to anything, so it's dropped rather than shown to the user as a
+// dead-looking label. Once this instance has a live website crawl source
+// (item.key will be the real page URL), sources will start appearing again
+// with no further code change needed here.
+function isRealUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}
+
 export function dedupeSources(chunks: RetrievedChunk[]): RetrievedSource[] {
   const seen = new Map<string, RetrievedSource>();
   for (const c of chunks) {
-    if (!c.source.url || seen.has(c.source.url)) continue;
+    if (!c.source.url || !isRealUrl(c.source.url) || seen.has(c.source.url)) continue;
     seen.set(c.source.url, c.source);
   }
   return [...seen.values()];
