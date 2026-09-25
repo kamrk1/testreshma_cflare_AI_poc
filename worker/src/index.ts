@@ -7,13 +7,14 @@ import {
   CONSENT_QUESTION,
   buildTranscriptSummary,
   consentAlreadyAsked,
+  extractPhone,
   findPhoneInThread,
   guessName,
   isAffirmative,
   looksLikeBookingRequest,
   submitLead,
 } from "./lead";
-import { isSmallTalk, SMALL_TALK_REPLY } from "./smalltalk";
+import { matchSmallTalk } from "./smalltalk";
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -83,11 +84,15 @@ export default {
       }
     }
 
-    // Turn N: a phone number or booking request just showed up and we
-    // haven't asked for consent yet this thread -> ask, don't answer yet.
-    const phoneInThread = findPhoneInThread(message, history);
-    if (!consentAlreadyAsked(history) && (phoneInThread || looksLikeBookingRequest(message))) {
-      if (phoneInThread) {
+    // Turn N: a phone number or booking request just showed up in THIS
+    // message and we haven't asked for consent yet -> ask, don't answer yet.
+    // Deliberately checks only the current message, not the whole history —
+    // checking the whole rolling window meant a phone number mentioned many
+    // turns ago (still inside the last-6-turns history sent by the client)
+    // would re-trigger this branch on every later, unrelated message.
+    const phoneInMessage = extractPhone(message);
+    if (!consentAlreadyAsked(history) && (phoneInMessage || looksLikeBookingRequest(message))) {
+      if (phoneInMessage) {
         return json({ reply: CONSENT_QUESTION, sources: [], sessionId });
       }
       // Booking intent but no phone number yet — ask for it first.
@@ -98,11 +103,12 @@ export default {
       });
     }
 
-    // Pure acknowledgment/small talk ("ok", "thanks") has no question for
+    // Pure greeting/thanks/farewell/acknowledgment has no question for
     // retrieval to answer — skip straight to a canned reply rather than
     // running search+generation and dragging along irrelevant "sources".
-    if (isSmallTalk(message)) {
-      return json({ reply: SMALL_TALK_REPLY, sources: [], sessionId });
+    const smallTalkReply = matchSmallTalk(message, siteConfig.botName, siteConfig.escalationContact);
+    if (smallTalkReply) {
+      return json({ reply: smallTalkReply, sources: [], sessionId });
     }
 
     // ── Normal grounded Q&A flow ──
