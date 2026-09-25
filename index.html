@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CA in Satara | Income Tax, GST, Startup & Accounting | CA Reshma Jadhav</title>
+  <meta name="description" content="CA Reshma Jadhav & Company — trusted CA in Satara for income tax, GST, startup registration, accounting & loans. Free consultation. ☎ +91 81779 22977.">
+  <link rel="icon" type="image/png" href="CA India Logo.png"/>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin/>
+  
+  <style>
+    /* ==========================================================================
+       1. CSS Variables & Base Setup (Apple Style + Gold/Navy)
+       ========================================================================== */
+    :root {
+      --bg-color: #0D1B2A; /* Navy */
+      --card-bg: #162032; /* Mid Navy */
+      --card-border: rgba(201,162,39,0.15);
+      --text-main: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #C9A227; /* Gold */
+      --accent-light: #E8C050;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       Navigation
+       ========================================================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 9999;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      height: 68px;
+    }
+
+    nav .logo {
+      font-size: 16.5px;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    nav .nav-links a {
+      font-size: 14px;
+      color: var(--text-main);
+      opacity: 0.8;
+      transition: opacity 0.3s, color 0.3s;
+    }
+
+    nav .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+      nav .nav-links { display: none; }
+    }
+
+    /* ==========================================================================
+       2. Hero Section
+       ========================================================================== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.25rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 42%, rgba(201,162,39,0.12) 0%, transparent 60%);
+    }
+
+    /* Drifting gold ambience — Apple-keynote calm, GPU-friendly */
+    .hero-orb { position: absolute; border-radius: 50%; pointer-events: none;
+      filter: blur(70px); opacity: .5; will-change: transform; }
+    .hero-orb-a { width: 420px; height: 420px; top: -120px; left: -100px;
+      background: radial-gradient(circle, rgba(201,162,39,.22), transparent 70%);
+      animation: orb-drift 14s ease-in-out infinite alternate; }
+    .hero-orb-b { width: 520px; height: 520px; bottom: -180px; right: -140px;
+      background: radial-gradient(circle, rgba(201,162,39,.14), transparent 70%);
+      animation: orb-drift 18s ease-in-out infinite alternate-reverse; }
+    @keyframes orb-drift {
+      from { transform: translate(0,0) scale(1); }
+      to { transform: translate(46px,30px) scale(1.08); }
+    }
+
+    .hero-badge, .hero h1, .hero .hero-sub, .hero-links, .scroll-cue {
+      position: relative; z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(201,162,39,0.12);
+      border: 1px solid rgba(201,162,39,0.35);
+      color: var(--accent-light);
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      max-width: 94%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      margin-bottom: 1.25rem;
+      line-height: 1.04;
+      text-wrap: balance;
+      /* Static gradient: the infinite sheen repainted every frame and delayed LCP. */
+      background: linear-gradient(100deg, #FFFFFF 30%, var(--accent-light) 65%, #FFFFFF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* LCP fast-path: headline fades in without the blur (blur forces late paint). */
+    @keyframes hero-fade {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body.prem-hero-in .hero h1 { animation: hero-fade 500ms cubic-bezier(.22,1,.36,1) 90ms both; }
+
+    .hero p {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 640px;
+      line-height: 1.65;
+    }
+
+    /* Scroll cue */
+    .scroll-cue { margin-top: 3rem; display: inline-flex; flex-direction: column;
+      align-items: center; gap: 8px; color: rgba(255,255,255,.45);
+      font-size: .7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-cue .cue-dot { width: 24px; height: 40px; border-radius: 14px;
+      border: 1.5px solid rgba(201,162,39,.5); position: relative; }
+    .scroll-cue .cue-dot::after { content: ''; position: absolute; left: 50%;
+      top: 7px; width: 4px; height: 8px; margin-left: -2px; border-radius: 4px;
+      background: var(--accent-light); animation: cue-drop 1.8s ease-in-out infinite; }
+    @keyframes cue-drop {
+      0% { transform: translateY(0); opacity: 1; }
+      70% { transform: translateY(12px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    .hero-links {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: var(--bg-color);
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(201,162,39,0.3);
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(201,162,39,0.5);
+    }
+    
+    .btn-outline {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-main);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent);
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(201,162,39,0.15);
+    }
+
+    /* ==========================================================================
+       3. Cinematic Scroll Sequence
+       ========================================================================== */
+    .scroll-track {
+      height: 400vh; 
+      position: relative;
+    }
+
+    .sticky-container {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--bg-color);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .hardware-accelerated-box {
+      width: 320px;
+      height: 320px;
+      background: linear-gradient(135deg, var(--card-bg), #0D1B2A);
+      border: 1px solid rgba(201,162,39,0.3);
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 600;
+      will-change: transform, opacity; 
+      transform: scale(1);
+      box-shadow: 0 20px 60px rgba(201,162,39,0.15);
+      text-align: center;
+      padding: 2rem;
+      color: var(--accent-light);
+    }
+
+    .box-logo {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .scroll-text {
+      position: absolute;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 600;
+      text-align: center;
+      opacity: 0;
+      will-change: opacity, transform;
+      transform: translateY(20px);
+      max-width: 800px;
+      padding: 0 1rem;
+      color: var(--text-main);
+    }
+    
+    .scroll-text span {
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       4. Content Grids & Sections
+       ========================================================================== */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .section-title em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 1rem auto 0;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--card-border);
+    }
+    .card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .icon-wrapper {
+      width: 64px;
+      height: 64px;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Metrics Bar */
+    .metrics {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 4rem 2rem;
+      background: var(--card-bg);
+      flex-wrap: wrap;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .metric { text-align: center; padding: 1rem 2rem; }
+    .metric-value { font-size: 3.5rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+    .metric-label { font-size: 0.85rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+
+    /* Season Banner */
+    .season-banner {
+      background: linear-gradient(140deg, #07131F 0%, #0C2036 52%, #07131F 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(5,16,32,0.35);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .season-banner.is-visible { opacity: 1; transform: translateY(0); }
+    .season-banner-tag {
+      display: inline-block;
+      background: rgba(201,162,39,0.14);
+      border: 1px solid rgba(201,162,39,0.36);
+      color: var(--accent-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+    .season-banner h3, .season-banner .season-banner-title { font-size: 2.2rem; margin-bottom: 1rem; font-weight: 600; }
+    .season-banner h3 em, .season-banner .season-banner-title em { color: var(--accent-light); font-style: italic; }
+    .season-banner p { color: var(--text-muted); line-height: 1.7; max-width: 700px; margin: 0 auto 2rem; }
+    .season-banner-chips { display: flex; justify-content: center; gap: 10px; margin-bottom: 2rem; flex-wrap: wrap; }
+    .season-banner-chips span { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Benefit Panel */
+    .benefit-panel {
+      background: linear-gradient(135deg, var(--card-bg), var(--bg-color));
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 4rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .benefit-panel.is-visible { opacity: 1; transform: translateY(0); }
+    .benefit-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; font-weight: 600; }
+    .benefit-title em { color: var(--accent-light); font-style: italic; }
+    .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .benefit-item { display: flex; align-items: flex-start; gap: 15px; background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+    .benefit-tick { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--bg-color); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
+
+    /* Trust Grid */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto 6rem;
+    }
+    .trust-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--card-border);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .trust-card.is-visible { opacity: 1; transform: translateY(0); }
+    .trust-num { font-size: 4rem; font-weight: 700; color: rgba(201,162,39,0.08); position: absolute; top: 10px; right: 20px; line-height: 1; }
+    .trust-icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .trust-card h3 { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; }
+    .trust-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Scorecard / Lead Magnet */
+    .scorecard {
+      background: linear-gradient(145deg, var(--card-bg) 0%, #060D16 100%);
+      border-radius: 30px;
+      border: 1px solid var(--card-border);
+      padding: 4rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .scorecard { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; } }
+    .scorecard.is-visible { opacity: 1; transform: translateY(0); }
+    .sc-form { background: rgba(255,255,255,0.03); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+    .sc-field { margin-bottom: 1.2rem; }
+    .sc-field label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .sc-field input, .sc-field select { width: 100%; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(0,0,0,0.3); color: white; font-size: 1rem; font-family: inherit; }
+    .sc-field input:focus, .sc-field select:focus { outline: none; border-color: var(--accent); }
+
+    /* SEO Block */
+    .seo-block { background: var(--card-bg); border-radius: 20px; border: 1px solid var(--card-border); padding: 3rem; margin: 4rem auto; max-width: 1200px; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .seo-block.is-visible { opacity: 1; transform: translateY(0); }
+    .seo-block p { font-size: 1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .seo-block p:last-child { margin-bottom: 0; }
+    .seo-block strong { color: var(--text-main); }
+
+    /* FAQ */
+    .faq-list { max-width: 900px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .faq-list.is-visible { opacity: 1; transform: translateY(0); }
+    .faq-item { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border); margin-bottom: 1rem; overflow: hidden; }
+    .faq-q { width: 100%; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; background: none; border: none; color: var(--text-main); font-size: 1.1rem; font-weight: 600; cursor: pointer; text-align: left; }
+    .faq-a { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease; color: var(--text-muted); line-height: 1.6; }
+    .faq-item.open .faq-a { padding-bottom: 1.5rem; max-height: 300px; }
+    .faq-item.open .faq-q { color: var(--accent); }
+
+    /* Map / Address */
+    .address-card { background: var(--card-bg); border-radius: 20px; border: 1px solid var(--card-border); padding: 2rem; display: flex; gap: 1.5rem; align-items: center; max-width: 900px; margin: 0 auto 2rem; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .address-card.is-visible { opacity: 1; transform: translateY(0); }
+    .addr-icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(201,162,39,0.1); border: 1px solid rgba(201,162,39,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .map-wrap { max-width: 900px; margin: 0 auto 4rem; border-radius: 20px; overflow: hidden; border: 3px solid var(--card-bg); box-shadow: 0 0 0 2px var(--accent); position: relative; opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .map-wrap.is-visible { opacity: 1; transform: translateY(0); }
+    .map-wrap iframe { width: 100%; height: 350px; display: block; border: none; }
+    .map-caption { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(13,27,42,0.95), transparent); color: white; text-align: center; font-size: 0.9rem; font-weight: 600; pointer-events: none; }
+
+    /* Footer */
+    footer { background: #060D16; padding: 5rem 2rem 2rem; text-align: center; border-top: 2px solid var(--accent); }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-col p { color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .copyright { color: rgba(255,255,255,0.4); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+  </style>
+  <link rel="stylesheet" href="assets/css/premium.css?v=20260912c"/>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo" aria-label="CA Reshma Jadhav & Company — Home">
+      <img src="assets/ca-india-logo-96.png" alt="CA India logo" width="32" height="24" fetchpriority="high" style="width:32px;height:24px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0;"/>
+      <span><span style="color:var(--accent);">CA</span> Reshma Jadhav</span>
+    </a>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="links.html">Links</a>
+      <a href="blog.html">Blog</a>
+      <a href="business-scorecard.html">Scorecard</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
+    <div class="hero-badge">⚖️ Chartered Accountant · FCA, DISA, M.Com · ICAI M.No. 177451 · FRN 158156W</div>
+    <h1>Grow Revenue.<br><em>Stay Compliant.</em><br>Stress&#8209;Free.</h1>
+    <p class="hero-sub">Trusted <strong>CA in Satara</strong> for Income Tax, GST, Startup Registration, Accounting & Loans. CA Reshma Jadhav & Company — personal, tech-enabled, always on time.</p>
+    <div class="hero-links">
+      <a href="#contact" class="btn">📅 Schedule a Meeting</a>
+      <a href="#scorecard" class="btn btn-outline">📊 Free Scorecard</a>
+      <a href="tel:+918177922977" class="btn btn-outline">📞 Call Now</a>
+    </div>
+    <a href="#services" class="scroll-cue" aria-label="Scroll to services"><span class="cue-dot" aria-hidden="true"></span>Scroll</a>
+    <p style="margin-top:2rem;font-size:0.9rem;color:rgba(255,255,255,.66);">
+      In Pune? <a href="#" style="color:var(--accent-light);font-weight:600;border-bottom:1px solid rgba(201,162,39,.45);">File your ITR online, remotely&nbsp;→</a> — no office visit needed.
+    </p>
+  </header>
+
+  <!-- Cinematic Scroll Section -->
+  <section class="scroll-track" id="scroll-track">
+    <div class="sticky-container">
+      <div class="hardware-accelerated-box" id="animated-box">
+        <div class="box-logo">⚖️</div>
+        <div>10+ Years</div>
+        <div style="font-size: 1rem; color: rgba(255,255,255,0.6); font-weight: 400; margin-top: 0.5rem;">of Trust</div>
+      </div>
+      <div class="scroll-text" id="text-1">Zero penalties. <span>Ever.</span></div>
+      <div class="scroll-text" id="text-2">Your dedicated <span>financial partner.</span></div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="metrics reveal-target">
+    <div class="metric">
+      <div class="metric-value">500+</div>
+      <div class="metric-label">Happy Clients</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">10+</div>
+      <div class="metric-label">Years Exp.</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">1000+</div>
+      <div class="metric-label">Projects</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">24/7</div>
+      <div class="metric-label">Support</div>
+    </div>
+  </section>
+
+  <!-- Season Banner -->
+  <div class="season-banner reveal-target">
+    <div class="season-banner-tag">Business ITR Season · AY 2026–27</div>
+    <h2 class="season-banner-title">Business ITR, Balance Sheet, Tax Audit & <em>Nil Returns</em></h2>
+    <p>Proprietorships, partnership firms, LLPs and companies — balance sheet prepared, tax audit conducted where it applies, and the return filed by a Chartered Accountant. Satara office for local businesses; Pune and outstation clients fully remote.</p>
+    <div class="season-banner-chips">
+      <span>ITR-3 · ITR-4 · ITR-5 · ITR-6</span>
+      <span>Tax Audit u/s 44AB</span>
+      <span>Dormant / Nil Return</span>
+    </div>
+    <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
+      <a href="#" class="btn">🧾 Check My Business ITR Status</a>
+      <a href="#" class="btn btn-outline">60-second free check</a>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section class="section" id="services" style="padding-top: 2rem;">
+    <div class="section-header reveal-target">
+      <span class="eyebrow">Our Services</span>
+      <h2 class="section-title">CA Services in <em>Satara</em></h2>
+      <p class="section-sub">Complete financial and compliance services for businesses & individuals in Satara, Karad, Wai & Pune</p>
+    </div>
+    <div class="content-grid">
+      <a class="card reveal-target" href="startup-company-registration-satara.html" aria-label="Company and Startup Registration services">
+        <div class="icon-wrapper">🏢</div>
+        <h3>Company & Startup</h3>
+        <p>Private Limited company, LLP, partnership registration, PAN/TAN/GST, MCA filings, and ROC compliance for new businesses.</p>
+        <span class="card-link">Explore registration&nbsp;→</span>
+      </a>
+      <a class="card reveal-target" href="gst-services-satara.html" aria-label="GST registration and filing services">
+        <div class="icon-wrapper">📋</div>
+        <h3>GST Services</h3>
+        <p>Complete GST registration, monthly GSTR filing, ITC optimisation, and GST audit for businesses.</p>
+        <span class="card-link">Explore GST&nbsp;→</span>
+      </a>
+      <a class="card reveal-target" href="income-tax-satara.html" aria-label="Income tax and TDS services">
+        <div class="icon-wrapper">💰</div>
+        <h3>Income Tax & TDS</h3>
+        <p>ITR filing for individuals, businesses and NRIs. Includes TDS deduction, advance tax and notice handling.</p>
+        <span class="card-link">Explore tax&nbsp;→</span>
+      </a>
+      <a class="card reveal-target" href="accounting-bookkeeping-satara.html" aria-label="Accounting and MIS services">
+        <div class="icon-wrapper">📊</div>
+        <h3>Accounting & MIS</h3>
+        <p>Digital bookkeeping, cloud accounting, monthly MIS reports, financial dashboards, and cash flow management.</p>
+        <span class="card-link">Explore accounting&nbsp;→</span>
+      </a>
+      <a class="card reveal-target" href="loan-project-report-satara.html" aria-label="Loan and project report services">
+        <div class="icon-wrapper">🏦</div>
+        <h3>Loans & Projects</h3>
+        <p>Bank-ready project reports, loan advisory and financial projections for SMEs and startups seeking funding.</p>
+        <span class="card-link">Explore loans&nbsp;→</span>
+      </a>
+      <a class="card reveal-target" href="business-growth-satara.html" aria-label="Business growth advisory services">
+        <div class="icon-wrapper">📈</div>
+        <h3>Business Growth</h3>
+        <p>Strategic business advisory, financial planning and growth roadmap services for ambitious entrepreneurs.</p>
+        <span class="card-link">Explore growth&nbsp;→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Benefit Panel -->
+  <div class="benefit-panel reveal-target">
+    <p class="benefit-title">What You <em>Get</em> With Us</p>
+    <div class="benefit-grid">
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>On-time GST & ITR filing — zero penalties, ever</p></div>
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>Real-time financial dashboards & MIS reports</p></div>
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>Startup registered & compliance-ready in days</p></div>
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>Bank-approved loan & project reports</p></div>
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>Direct CA access — not a faceless call centre</p></div>
+      <div class="benefit-item"><div class="benefit-tick">✓</div><p>WhatsApp support — answers when you need them</p></div>
+    </div>
+  </div>
+
+  <!-- Trust Grid -->
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="section-header reveal-target">
+      <span class="eyebrow">Why Us</span>
+      <h2 class="section-title">Why Clients <em>Choose</em> Us</h2>
+      <p class="section-sub">Trusted by 500+ businesses across Satara, Pune & Maharashtra</p>
+    </div>
+  </section>
+  <div class="trust-grid">
+    <div class="trust-card reveal-target">
+      <div class="trust-num">01</div>
+      <div class="trust-icon">⚡</div>
+      <h3>Quick Turnaround</h3>
+      <p>Fast filing, quick replies — no more chasing your CA for weeks</p>
+    </div>
+    <div class="trust-card reveal-target">
+      <div class="trust-num">02</div>
+      <div class="trust-icon">💻</div>
+      <h3>Tech-Enabled</h3>
+      <p>Digital accounting, online portal & real-time dashboards</p>
+    </div>
+    <div class="trust-card reveal-target">
+      <div class="trust-num">03</div>
+      <div class="trust-icon">🤝</div>
+      <h3>Total Transparency</h3>
+      <p>Fixed pricing, honest advice — zero hidden costs</p>
+    </div>
+    <div class="trust-card reveal-target">
+      <div class="trust-num">04</div>
+      <div class="trust-icon">🎯</div>
+      <h3>Personal CA</h3>
+      <p>Direct access to CA Reshma — tailored solutions</p>
+    </div>
+  </div>
+
+  <!-- Scorecard -->
+  <section class="section" id="scorecard">
+    <div class="scorecard reveal-target">
+      <div>
+        <span class="eyebrow">Business Scorecard</span>
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">Are You a <em>Champion</em><br>or Just Getting By?</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">Find out if you're scaling-ready, where your quick wins are hiding, and the financial pitfalls quietly holding your business back.</p>
+        <div class="sc-tiers">
+          <div style="background:rgba(22,163,74,.12); border:1px solid rgba(22,163,74,.25); padding:10px; border-radius:10px; flex:1; text-align:center;">
+            <div style="font-size:1.2rem;">🏆</div><div style="font-weight:700; font-size:0.8rem; color:#86efac; margin-top:5px;">The Champion</div>
+          </div>
+          <div style="background:rgba(37,99,235,.12); border:1px solid rgba(37,99,235,.25); padding:10px; border-radius:10px; flex:1; text-align:center;">
+            <div style="font-size:1.2rem;">✅</div><div style="font-weight:700; font-size:0.8rem; color:#93c5fd; margin-top:5px;">Solid Player</div>
+          </div>
+          <div style="background:rgba(217,119,6,.12); border:1px solid rgba(217,119,6,.25); padding:10px; border-radius:10px; flex:1; text-align:center;">
+            <div style="font-size:1.2rem;">⚠️</div><div style="font-weight:700; font-size:0.8rem; color:#fcd34d; margin-top:5px;">Needs a Push</div>
+          </div>
+          <div style="background:rgba(220,38,38,.12); border:1px solid rgba(220,38,38,.25); padding:10px; border-radius:10px; flex:1; text-align:center;">
+            <div style="font-size:1.2rem;">🚨</div><div style="font-weight:700; font-size:0.8rem; color:#fca5a5; margin-top:5px;">High Alert</div>
+          </div>
+        </div>
+      </div>
+      <div class="sc-form">
+        <h3 style="margin-bottom: 1.5rem; text-align:center;">✍️ Tell us a little about yourself</h3>
+        <div class="sc-row">
+          <div class="sc-field">
+            <label for="sc-name">Your Name</label>
+            <input type="text" id="sc-name" name="name" autocomplete="name" placeholder="First Name"/>
+          </div>
+          <div class="sc-field">
+            <label for="sc-biz">Business Name</label>
+            <input type="text" id="sc-biz" name="business" autocomplete="organization" placeholder="Your Business"/>
+          </div>
+        </div>
+        <div class="sc-field">
+          <label for="sc-biztype">Type of Business</label>
+          <select id="sc-biztype" name="business-type">
+            <option>— Select —</option>
+            <option>Manufacturing</option>
+            <option>Trading / Retail</option>
+            <option>Services</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sc-row">
+          <div class="sc-field">
+            <label for="sc-mobile">Mobile Number</label>
+            <input type="tel" id="sc-mobile" name="mobile" autocomplete="tel" placeholder="+91 98765 43210"/>
+          </div>
+          <div class="sc-field">
+            <label for="sc-email">Email Address</label>
+            <input type="email" id="sc-email" name="email" autocomplete="email" placeholder="yourname@example.com"/>
+          </div>
+        </div>
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.4); text-align:center; margin:1rem 0;">🔒 Your details are secure & private — we'll personalise your results and send your report. No spam.</p>
+        <button class="btn" style="width: 100%; justify-content:center;">Reveal My Business Score&nbsp;→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Block -->
+  <section class="section" style="padding-bottom: 0;">
+    <div class="section-header reveal-target">
+      <span class="eyebrow">CA in Satara</span>
+      <h2 class="section-title">Your Trusted <em>CA in Satara</em></h2>
+    </div>
+  </section>
+  <div class="seo-block reveal-target">
+    <p><strong>CA Reshma Jadhav & Company (ICAI Membership No. 177451 · Firm Reg. No. 158156W) is a Satara-based Chartered Accountant practice providing income tax filing, GST registration, startup company registration, accounting, TDS compliance, and bank loan project reports — all CA services under one roof, serving Satara, Karad, Wai, Mahabaleshwar, and Pune.</strong></p>
+    <p><strong>For businesses searching for a trusted CA in Satara: CA Reshma Jadhav brings 10+ years of experience, a zero-penalty filing track record, and direct CA access — not a call centre or junior assistant.</strong></p>
+    <p>CA Reshma Jadhav & Company is a Satara-based Chartered Accountant practice serving businesses and individuals across Satara, Karad, Wai, Mahabaleshwar, and Pune. Whether you need <strong>income tax filing in Satara</strong>, <strong>GST registration</strong>, <strong>startup company registration</strong>, monthly <strong>accounting and bookkeeping</strong>, <strong>TDS compliance</strong>, or a <strong>bank loan project report</strong> — all CA services under one roof.</p>
+    <p>As a dedicated <strong>CA in Satara</strong>, CA Reshma Jadhav brings a tech-enabled, personal approach to every client. You get direct CA access — every filing is on time, every compliance tracked, and every client gets a clear explanation of what's happening with their accounts.</p>
+    <p>Serving sole proprietors, partnerships, private limited companies, LLPs, startups, traders, manufacturers, and salaried individuals across Maharashtra. Searching for a <strong>reliable Chartered Accountant near Satara</strong>? Call or WhatsApp for a free first consultation.</p>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-header reveal-target">
+      <span class="eyebrow">Frequently Asked</span>
+      <h2 class="section-title">CA in Satara — <em>FAQs</em></h2>
+      <p class="section-sub">Common questions about our CA services in Satara</p>
+    </div>
+    <div class="faq-list reveal-target">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Who is the best CA in Satara for income tax?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>CA Reshma Jadhav & Company is one of Satara's most trusted CA practices for income tax. We handle individual ITR (salaried, self-employed, NRI), corporate tax returns, advance tax, and TDS compliance — zero-penalty, on-time filing every year.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Can you file my income tax return if I'm in Pune?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>Yes. We file ITR for Pune clients completely online — share documents on WhatsApp or our secure upload form, and CA Reshma reviews, discusses your tax position, and files remotely. No office visit needed.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          How do I get GST registration in Satara?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>We handle the complete GST registration process — document collection, application submission, follow-up, GSTR monthly/quarterly filing, GST audit, and ITC optimization. Never miss a deadline again.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Can you help with startup registration in Satara?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>Yes. Private Limited company, LLP formation, partnership firm registration, PAN/TAN/GST registration, MCA/ROC filings — we handle all of it for new businesses in Satara.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          What accounting services do you offer in Satara?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>Digital bookkeeping, Tally/cloud accounting, monthly MIS reports, financial dashboards, cash flow management, and ongoing accounting support for Satara businesses.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          How do I contact the CA office in Satara?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>Call or WhatsApp CA Reshma Jadhav at +91 81779 22977, email careshmajadhav@gmail.com, or visit E Wing, Samruddhi Apartments, Sadar Bazar, Satara 415002.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          What is CA Reshma Jadhav's ICAI membership number?
+          <span>▾</span>
+        </button>
+        <div class="faq-a"><p>CA Reshma Jadhav is a <strong>Fellow Chartered Accountant (FCA)</strong>, <strong>M.Com</strong>, and <strong>DISA (ICAI)</strong> qualified, registered with the Institute of Chartered Accountants of India. Her ICAI Membership Number is <strong>177451</strong> and the firm's Registration Number is <strong>158156W</strong>. She has over 10 years of experience serving businesses and individuals across Satara and Maharashtra.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map & Address -->
+  <div class="address-card reveal-target">
+    <div class="addr-icon">📍</div>
+    <div>
+      <h3 style="font-size:1.2rem; margin-bottom:0.5rem; color:var(--text-main);">Our Office</h3>
+      <p style="color:var(--text-muted); line-height:1.6;">E Wing, Samruddhi Apartments, Bombay Restaurant Chowk,<br>Sadar Bazar, Satara, Maharashtra 415002</p>
+      <a href="tel:+918177922977" style="display:inline-block; margin-top:10px; font-weight:700; color:var(--accent);">📞 +91 81779 22977</a>
+    </div>
+  </div>
+  <div class="map-wrap reveal-target">
+    <iframe title="CA Reshma Jadhav & Company on the map — Sadar Bazar, Satara" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3801.1572531398424!2d74.023095!3d17.69003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc239448fbef11f%3A0xf6e51d81364d2dc8!2sCA%20Reshma%20Jadhav%20%26%20Company!5e0!3m2!1sen!2sin!4v1747493015593!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-caption">📍 CA Reshma Jadhav & Company · Satara, Maharashtra</div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 style="display:flex; align-items:center; gap:10px;">
+          <img src="assets/ca-india-logo-96.png" alt="CA India logo" width="28" height="21" loading="lazy" style="width:28px;height:21px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;"/>
+          CA Reshma Jadhav
+        </h4>
+        <p><strong style="color:var(--text-main);">CA Reshma Jadhav & Company</strong><br>Chartered Accountant · Satara</p>
+        <p>FCA, DISA (ICAI), M.Com<br>ICAI M.No. 177451 · FRN 158156W</p>
+        <p>E Wing, Samruddhi Apartments<br>Bombay Restaurant Chowk, Sadar Bazar<br>Satara, Maharashtra 415002</p>
+        <p style="margin-top:1rem;"><a href="about.html" style="color:var(--accent-light);font-weight:600;">About the firm&nbsp;→</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <p><a href="startup-company-registration-satara.html" style="color:var(--text-muted);">Company & Startup Registration</a></p>
+        <p><a href="gst-services-satara.html" style="color:var(--text-muted);">GST Registration & Filing</a></p>
+        <p><a href="income-tax-satara.html" style="color:var(--text-muted);">Income Tax & TDS</a></p>
+        <p><a href="accounting-bookkeeping-satara.html" style="color:var(--text-muted);">Accounting & MIS</a></p>
+        <p><a href="loan-project-report-satara.html" style="color:var(--text-muted);">Loans & Project Reports</a></p>
+        <p><a href="business-growth-satara.html" style="color:var(--text-muted);">Business Growth Advisory</a></p>
+        <p><a href="business-itr-filing-satara.html" style="color:var(--text-muted);">Business ITR Filing AY 2026–27</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <p><a href="business-scorecard.html" style="color:var(--text-muted);">Free Business Scorecard</a></p>
+        <p><a href="blog.html" style="color:var(--text-muted);">CA Blog & Updates</a></p>
+        <p><a href="online-itr-filing-pune.html" style="color:var(--text-muted);">Online ITR Filing — Pune</a></p>
+        <p><a href="book-meeting.html" style="color:var(--text-muted);">Schedule a Meeting</a></p>
+        <p><a href="contact.html" style="color:var(--text-muted);">Contact & Directions</a></p>
+        <p><a href="#faq" style="color:var(--text-muted);">FAQs</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Talk to Your CA</h4>
+        <p>📞 <a href="tel:+918177922977" style="color:var(--text-main);font-weight:700;">+91 81779 22977</a></p>
+        <p>✉️ <a href="mailto:careshmajadhav@gmail.com" style="color:var(--text-muted);">careshmajadhav@gmail.com</a></p>
+        <p>🕙 Mon–Sat · 10:00 AM – 7:00 PM<br><span style="font-size:0.85rem;">WhatsApp documents anytime — replies within one working day.</span></p>
+        <div style="margin-top: 1.5rem; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="book-meeting.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Book a Consultation</a>
+          <a href="https://wa.me/918177922977" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 CA Reshma Jadhav & Company · ICAI M.No. 177451 · FRN 158156W · Satara, Maharashtra</p>
+      <p><a href="sitemap.xml" style="color:inherit;">Sitemap</a> · <a href="robots.txt" style="color:inherit;">Robots</a> · 🛠️ Site by RK</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ==========================================================================
+       1. Scroll-Triggered Animation Engine (RequestAnimationFrame)
+       ========================================================================== */
+    const track = document.getElementById('scroll-track');
+    const box = document.getElementById('animated-box');
+    const text1 = document.getElementById('text-1');
+    const text2 = document.getElementById('text-2');
+
+    let ticking = false;
+
+    function updateScrollAnimations() {
+      const trackRect = track.getBoundingClientRect();
+      const scrollProgress = Math.max(0, Math.min(1, -trackRect.top / (trackRect.height - window.innerHeight)));
+
+      if (scrollProgress < 0.4) {
+        const boxProgress = scrollProgress / 0.4;
+        box.style.transform = `scale(${1 - (boxProgress * 0.5)})`;
+        box.style.opacity = 1 - boxProgress;
+      } else {
+        box.style.opacity = 0;
+      }
+
+      if (scrollProgress > 0.3 && scrollProgress < 0.65) {
+        const text1Progress = (scrollProgress - 0.3) / 0.35; 
+        const opacity = Math.sin(text1Progress * Math.PI); 
+        text1.style.opacity = opacity;
+        text1.style.transform = `translateY(${20 - (text1Progress * 40)}px)`;
+      } else {
+        text1.style.opacity = 0;
+      }
+
+      if (scrollProgress > 0.65) {
+        const text2Progress = (scrollProgress - 0.65) / 0.35;
+        const opacity = Math.sin(text2Progress * Math.PI);
+        text2.style.opacity = opacity;
+        text2.style.transform = `translateY(${20 - (text2Progress * 40)}px)`;
+      } else {
+        text2.style.opacity = 0;
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollAnimations);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    /* ==========================================================================
+       2. Intersection Observer (For standard fade-ins)
+       ========================================================================== */
+    const revealOptions = {
+      root: null,
+      threshold: 0.15,
+      rootMargin: "0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal-target').forEach(target => {
+      revealObserver.observe(target);
+    });
+  </script>
+  <script src="assets/js/premium.js" defer></script>
+</body>
+</html>

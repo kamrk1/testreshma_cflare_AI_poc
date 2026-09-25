@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Account | CA Reshma Jadhav & Company</title>
+<meta name="description" content="View your invoices, documents, and compliance status — CA Reshma Jadhav, Satara."/>
+<link rel="icon" type="image/png" href="CA India Logo.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/></noscript>
+
+<style>
+:root {
+  --ink:     #0E1116;
+  --ink-mid: #2A3240;
+  --ink-lt:  #4A5568;
+  --muted:   #6B7A8D;
+  --mist:    #F7F8FA;
+  --white:   #FFFFFF;
+  --border:  #E8ECF2;
+  --gold:    #C9A227;
+  --gold-lt: #E8C050;
+  --gold-bg: #FDF9EE;
+  --green:   #059669;
+  --green-bg:#ECFDF5;
+  --blue:    #2563EB;
+  --blue-bg: #EFF6FF;
+  --amber:   #D97706;
+  --amber-bg:#FFFBEB;
+  --red:     #DC2626;
+  --red-bg:  #FEF2F2;
+  --r:       14px;
+  --r-lg:    20px;
+  --sh:      0 2px 12px rgba(14,17,22,.07);
+  --sh-lg:   0 8px 40px rgba(14,17,22,.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--mist);
+  color: var(--ink);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── LOGIN SCREEN ─────────────────────────────────────────────── */
+.login-screen {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: linear-gradient(160deg, #060E18 0%, #0D1B2A 60%, #0a1520 100%);
+  position: relative; overflow: hidden;
+}
+.login-screen::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(201,162,39,.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(201,162,39,.07) 0%, transparent 50%);
+}
+.login-card {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 24px;
+  padding: 44px 36px;
+  width: min(400px, 100%);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.login-logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; margin-bottom: 28px;
+}
+.login-logo-mark {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: var(--ink);
+  font-family: 'Instrument Serif', serif;
+}
+.login-firm {
+  text-align: left;
+  line-height: 1.2;
+}
+.login-firm-name { font-size: 13px; font-weight: 700; color: #fff; }
+.login-firm-sub  { font-size: 10px; color: rgba(255,255,255,.4); }
+.login-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px; color: #fff;
+  margin-bottom: 6px; line-height: 1.2;
+}
+.login-sub {
+  font-size: 13px; color: rgba(255,255,255,.4);
+  margin-bottom: 32px; line-height: 1.6;
+}
+.login-field {
+  position: relative; margin-bottom: 14px; text-align: left;
+}
+.login-field label {
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.45);
+  text-transform: uppercase; letter-spacing: .8px;
+  display: block; margin-bottom: 8px;
+}
+.login-field input {
+  width: 100%; padding: 14px 16px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px; color: #fff;
+  outline: none; transition: border .2s;
+  letter-spacing: .5px;
+}
+.login-field input:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,.09);
+}
+.login-field input::placeholder { color: rgba(255,255,255,.2); }
+.login-btn {
+  width: 100%; padding: 15px;
+  background: var(--gold);
+  border: none; border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--ink);
+  cursor: pointer; margin-top: 6px;
+  transition: opacity .15s, transform .1s;
+}
+.login-btn:hover  { opacity: .9; }
+.login-btn:active { transform: scale(.98); }
+.login-err {
+  font-size: 12px; color: #ff6b6b;
+  margin-top: 12px; min-height: 18px;
+}
+.login-contact {
+  margin-top: 28px; font-size: 12px; color: rgba(255,255,255,.3);
+}
+.login-contact a { color: var(--gold); text-decoration: none; }
+
+/* ── PORTAL SHELL ─────────────────────────────────────────────── */
+.portal-shell { display: none; min-height: 100vh; }
+
+/* Header */
+.portal-header {
+  background: var(--ink);
+  padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.portal-header-left { display: flex; align-items: center; gap: 10px; }
+.portal-logo-sm {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif; font-size: 14px; font-weight: 700; color: var(--ink);
+}
+.portal-firm-sm { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.7); }
+.portal-client-name {
+  font-size: 13px; font-weight: 600; color: var(--gold-lt);
+}
+.logout-btn {
+  padding: 6px 12px; background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15); border-radius: 6px;
+  color: rgba(255,255,255,.5); font-size: 12px; cursor: pointer;
+  font-family: 'Outfit', sans-serif; transition: .15s;
+}
+.logout-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
+
+/* Body */
+.portal-body { max-width: 800px; margin: 0 auto; padding: 24px 16px 60px; }
+
+/* Client banner */
+.client-banner {
+  background: var(--white); border-radius: var(--r-lg);
+  padding: 20px 24px; margin-bottom: 20px;
+  box-shadow: var(--sh);
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.client-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--gold-bg); border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; font-weight: 700; color: var(--gold);
+  flex-shrink: 0;
+}
+.client-info { flex: 1; min-width: 0; }
+.client-info-name  { font-size: 18px; font-weight: 700; color: var(--ink); }
+.client-info-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.client-contact-btn {
+  padding: 9px 18px; background: #25D366; color: #fff;
+  border: none; border-radius: 8px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: 'Outfit', sans-serif;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+}
+
+/* Section */
+.portal-section { margin-bottom: 20px; }
+.section-card {
+  background: var(--white); border-radius: var(--r-lg);
+  overflow: hidden; box-shadow: var(--sh);
+}
+.section-head {
+  background: var(--ink); padding: 14px 20px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-head-icon { font-size: 16px; }
+.section-head-title { font-size: 14px; font-weight: 700; color: #fff; flex: 1; }
+.section-head-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.7);
+}
+
+/* Invoice rows */
+.inv-row {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.inv-row:last-child { border-bottom: none; }
+.inv-no {
+  font-size: 12px; font-weight: 700; color: var(--ink);
+  font-family: monospace; white-space: nowrap;
+}
+.inv-detail { flex: 1; min-width: 0; }
+.inv-service { font-size: 13px; font-weight: 600; color: var(--ink); }
+.inv-meta    { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.inv-right   { text-align: right; flex-shrink: 0; }
+.inv-amount  { font-size: 15px; font-weight: 800; color: var(--ink); }
+.pill {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px; margin-top: 4px;
+}
+.pill-paid     { background: var(--green-bg); color: var(--green); }
+.pill-sent     { background: var(--blue-bg);  color: var(--blue);  }
+.pill-overdue  { background: var(--red-bg);   color: var(--red);   }
+.pill-draft    { background: var(--border);   color: var(--muted); }
+.inv-pdf-btn {
+  font-size: 11px; padding: 4px 10px; border-radius: 6px;
+  background: var(--mist); color: var(--ink-lt);
+  border: 1.5px solid var(--border); cursor: pointer;
+  font-family: 'Outfit', sans-serif; font-weight: 600;
+  white-space: nowrap; margin-top: 4px; display: inline-block;
+  transition: .15s;
+}
+.inv-pdf-btn:hover { background: var(--gold-bg); border-color: var(--gold); color: var(--ink); }
+
+/* Document rows */
+.doc-row {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+}
+.doc-row:last-child { border-bottom: none; }
+.doc-row-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+.doc-row-title  { font-size: 13px; font-weight: 600; color: var(--ink); flex: 1; }
+.doc-row-meta   { font-size: 11px; color: var(--muted); }
+.doc-checklist  { display: flex; flex-wrap: wrap; gap: 6px; }
+.doc-chip {
+  font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+}
+.doc-chip-received { background: var(--green-bg); color: var(--green); }
+.doc-chip-pending  { background: var(--amber-bg); color: var(--amber); }
+.doc-chip-filed    { background: var(--blue-bg);  color: var(--blue);  }
+
+/* Compliance rows */
+.cmp-row {
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.cmp-row:last-child { border-bottom: none; }
+.cmp-type   { font-size: 13px; font-weight: 600; color: var(--ink); flex: 1; }
+.cmp-date   { font-size: 11px; color: var(--muted); }
+
+/* Empty state */
+.portal-empty {
+  padding: 32px 20px; text-align: center;
+  color: var(--muted); font-size: 13px;
+}
+.portal-empty-icon { font-size: 28px; margin-bottom: 8px; }
+
+/* Loading */
+.portal-loading {
+  padding: 24px; text-align: center; color: var(--muted); font-size: 13px;
+}
+
+/* Divider */
+.divider {
+  height: 1px; background: var(--border); margin: 0;
+}
+
+/* WhatsApp CTA at bottom */
+.portal-cta {
+  background: var(--white); border-radius: var(--r-lg);
+  padding: 20px 24px; text-align: center;
+  box-shadow: var(--sh); margin-top: 20px;
+}
+.portal-cta p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.cta-wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; background: #25D366; color: #fff;
+  border-radius: 12px; font-size: 14px; font-weight: 700;
+  text-decoration: none; transition: opacity .15s;
+}
+.cta-wa:hover { opacity: .88; }
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 24px; height: 24px; border: 3px solid var(--border);
+  border-top-color: var(--gold); border-radius: 50%;
+  animation: spin .7s linear infinite; margin: 0 auto 12px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-card { padding: 32px 24px; }
+  .portal-body { padding: 16px 12px 60px; }
+  .client-banner { gap: 12px; }
+  .inv-row { flex-wrap: wrap; gap: 8px; }
+  .inv-right { width: 100%; display: flex; align-items: center; justify-content: space-between; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN SCREEN ══════════════════════════════════════════════ -->
+<div class="login-screen" id="login-screen" style="display:flex;">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-logo-mark">R</div>
+      <div class="login-firm">
+        <div class="login-firm-name">CA Reshma Jadhav & Company</div>
+        <div class="login-firm-sub">Chartered Accountants · Satara</div>
+      </div>
+    </div>
+    <div class="login-title">My Account</div>
+    <div class="login-sub">Enter your registered mobile number to view your invoices, documents and filings.</div>
+
+    <div class="login-field">
+      <label>Mobile Number</label>
+      <input type="tel" id="login-phone" maxlength="12"
+        placeholder="98765 43210" autocomplete="tel"
+        onkeydown="if(event.key==='Enter')tryPortalLogin()"/>
+    </div>
+
+    <button class="login-btn" onclick="tryPortalLogin()" id="login-btn">View My Account&nbsp;→</button>
+    <div class="login-err" id="login-err"></div>
+
+    <div class="login-contact">
+      Questions? <a href="https://wa.me/918177922977" target="_blank">WhatsApp CA Reshma</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PORTAL SHELL ══════════════════════════════════════════════ -->
+<div class="portal-shell" id="portal-shell" style="display:none;">
+
+  <!-- Header -->
+  <div class="portal-header">
+    <div class="portal-header-left">
+      <div class="portal-logo-sm">R</div>
+      <div>
+        <div class="portal-firm-sm">CA Reshma Jadhav & Co.</div>
+        <div class="portal-client-name" id="portal-client-name">Loading…</div>
+      </div>
+    </div>
+    <button class="logout-btn" onclick="portalLogout()">Sign Out</button>
+  </div>
+
+  <!-- Body -->
+  <div class="portal-body">
+
+    <!-- Client banner -->
+    <div class="client-banner" id="client-banner" style="display:none;">
+      <div class="client-avatar" id="portal-avatar">?</div>
+      <div class="client-info">
+        <div class="client-info-name" id="banner-name">—</div>
+        <div class="client-info-sub"  id="banner-sub">—</div>
+      </div>
+      <a class="client-contact-btn" href="https://wa.me/918177922977" target="_blank">
+        💬 Chat with CA
+      </a>
+    </div>
+
+    <!-- Loading -->
+    <div id="portal-loading" style="padding:40px;text-align:center;">
+      <div class="spinner"></div>
+      <div style="color:var(--muted);font-size:13px;">Loading your account…</div>
+    </div>
+
+    <!-- Invoices -->
+    <div class="portal-section" id="section-invoices" style="display:none;">
+      <div class="section-card">
+        <div class="section-head">
+          <span class="section-head-icon">🧾</span>
+          <span class="section-head-title">Invoices</span>
+          <span class="section-head-badge" id="inv-badge">0</span>
+        </div>
+        <div id="inv-list"></div>
+      </div>
+    </div>
+
+    <!-- Documents -->
+    <div class="portal-section" id="section-docs" style="display:none;">
+      <div class="section-card">
+        <div class="section-head">
+          <span class="section-head-icon">📄</span>
+          <span class="section-head-title">Document Checklists</span>
+          <span class="section-head-badge" id="doc-badge">0</span>
+        </div>
+        <div id="doc-list"></div>
+      </div>
+    </div>
+
+    <!-- Compliance -->
+    <div class="portal-section" id="section-cmp" style="display:none;">
+      <div class="section-card">
+        <div class="section-head">
+          <span class="section-head-icon">📆</span>
+          <span class="section-head-title">Compliance & Filings</span>
+          <span class="section-head-badge" id="cmp-badge">0</span>
+        </div>
+        <div id="cmp-list"></div>
+      </div>
+    </div>
+
+    <!-- ITR Uploads -->
+    <div class="portal-section" id="section-itr" style="display:none;">
+      <div class="section-card">
+        <div class="section-head">
+          <span class="section-head-icon">📋</span>
+          <span class="section-head-title">ITR Document Submissions</span>
+          <span class="section-head-badge" id="itr-badge">0</span>
+        </div>
+        <div id="itr-list"></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="portal-cta" id="portal-cta" style="display:none;">
+      <p>Need help or have a question about your filings?</p>
+      <a class="cta-wa" href="https://wa.me/918177922977" target="_blank">
+        💬 WhatsApp CA Reshma Jadhav
+      </a>
+    </div>
+
+  </div><!-- /portal-body -->
+</div><!-- /portal-shell -->
+
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec';
+const SESSION_KEY = 'ca_portal_session';
+
+let portalPhone = '';
+let portalToken = '';
+let portalData  = null;
+
+// ── Restore session on load ───────────────────────────────────────
+window.addEventListener('load', () => {
+  try {
+    const s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+    if (s && s.token && s.phone) {
+      portalPhone = s.phone;
+      portalToken = s.token;
+      showPortalShell(s.maskedName || '');
+      loadPortalData();
+      return;
+    }
+  } catch(e) {}
+  document.getElementById('login-phone').focus();
+});
+
+// ── LOGIN ─────────────────────────────────────────────────────────
+async function tryPortalLogin() {
+  const rawPhone = document.getElementById('login-phone').value.trim().replace(/\D/g, '');
+  const errEl    = document.getElementById('login-err');
+  const btn      = document.getElementById('login-btn');
+
+  errEl.textContent = '';
+  if (!rawPhone || rawPhone.length < 10) {
+    errEl.textContent = 'Please enter a valid 10-digit mobile number.'; return;
+  }
+
+  btn.textContent = 'Checking…'; btn.disabled = true;
+
+  try {
+    const res  = await fetch(GAS_URL + '?action=portal_login&phone=' + rawPhone, {redirect:'follow',cache:'no-cache'});
+    const data = JSON.parse(await res.text());
+    if (data.ok) {
+      portalPhone = data.phone;
+      portalToken = data.token;
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+        phone: data.phone, token: data.token, maskedName: data.maskedName
+      }));
+      showPortalShell(data.maskedName);
+      loadPortalData();
+    } else {
+      errEl.textContent = data.error || 'Number not found. Please contact CA Reshma.';
+    }
+  } catch(e) {
+    errEl.textContent = 'Connection failed. Please try again.';
+  }
+  btn.textContent = 'View My Account →'; btn.disabled = false;
+}
+
+// ── SHOW PORTAL ───────────────────────────────────────────────────
+function showPortalShell(maskedName) {
+  document.getElementById('login-screen').style.display  = 'none';
+  document.getElementById('portal-shell').style.display  = 'block';
+  document.getElementById('portal-client-name').textContent = maskedName || 'Welcome';
+}
+
+// ── LOAD DATA ─────────────────────────────────────────────────────
+async function loadPortalData() {
+  try {
+    const url  = GAS_URL + '?action=portal_data&phone=' + portalPhone + '&token=' + portalToken;
+    const res  = await fetch(url, {redirect:'follow', cache:'no-cache'});
+    const data = JSON.parse(await res.text());
+
+    if (!data.ok) {
+      if (data.error && data.error.includes('expired')) {
+        portalLogout(); return;
+      }
+      showError(data.error || 'Failed to load data'); return;
+    }
+
+    portalData = data;
+    document.getElementById('portal-loading').style.display = 'none';
+    renderPortal(data);
+
+  } catch(e) {
+    showError('Connection failed. Please refresh.');
+  }
+}
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderPortal(data) {
+  const c = data.client || {};
+
+  // Client banner
+  const banner   = document.getElementById('client-banner');
+  const initials = (c.Name||'').trim().split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase() || '?';
+  document.getElementById('portal-avatar').textContent = initials;
+  document.getElementById('banner-name').textContent   = c.Name || '—';
+  document.getElementById('portal-client-name').textContent = c.Name || 'Welcome';
+  const sub = [c.Business, c.City, c.Services ? c.Services.split(',').slice(0,2).join(', ') : ''].filter(Boolean).join(' · ');
+  document.getElementById('banner-sub').textContent = sub || 'Client';
+  banner.style.display = '';
+
+  // Invoices
+  renderInvoices(data.invoices || []);
+  renderDocuments(data.documents || []);
+  renderCompliance(data.compliance || []);
+  renderITR(data.itrUploads || []);
+
+  document.getElementById('portal-cta').style.display = '';
+}
+
+/* ── INVOICES ─────────────────────────────────────────────────── */
+function renderInvoices(invs) {
+  const sec = document.getElementById('section-invoices');
+  const el  = document.getElementById('inv-list');
+  document.getElementById('inv-badge').textContent = invs.length;
+  if (!invs.length) { el.innerHTML = emptyState('🧾','No invoices yet'); sec.style.display=''; return; }
+  sec.style.display = '';
+
+  const pillClass = {paid:'pill-paid',sent:'pill-sent',overdue:'pill-overdue',draft:'pill-draft'};
+  const pillLabel = {paid:'Paid ✓',sent:'Sent',overdue:'Overdue',draft:'Draft',cancelled:'Cancelled'};
+  const fmtAmt    = v => '₹' + parseFloat(v||0).toLocaleString('en-IN',{minimumFractionDigits:2});
+  const fmtD      = s => { if(!s) return '—'; try { return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); } catch(e){ return s; }};
+
+  el.innerHTML = invs.map(inv => `
+    <div class="inv-row">
+      <div class="inv-detail">
+        <div class="inv-no">${esc(inv.InvoiceNo||'—')}</div>
+        <div class="inv-service">${esc(inv.Service||'—')}</div>
+        <div class="inv-meta">
+          ${fmtD(inv.Date)}
+          ${inv.DueDate ? ' · Due ' + fmtD(inv.DueDate) : ''}
+          ${inv.FY ? ' · ' + inv.FY : ''}
+        </div>
+        ${inv.Description ? `<div style="font-size:11px;color:var(--muted);margin-top:2px;">${esc(inv.Description)}</div>` : ''}
+      </div>
+      <div class="inv-right">
+        <div class="inv-amount">${fmtAmt(inv.TotalAmount)}</div>
+        <div><span class="pill ${pillClass[inv.Status]||'pill-draft'}">${pillLabel[inv.Status]||esc(inv.Status||'—')}</span></div>
+        ${inv.Status === 'sent' || inv.Status === 'overdue'
+          ? `<div><button class="inv-pdf-btn" onclick="downloadInvoicePDF('${esc(inv.InvoiceNo)}')">📄 Download Invoice</button></div>`
+          : ''}
+      </div>
+    </div>`).join('');
+}
+
+/* ── DOCUMENTS ────────────────────────────────────────────────── */
+function renderDocuments(docs) {
+  const sec = document.getElementById('section-docs');
+  const el  = document.getElementById('doc-list');
+  document.getElementById('doc-badge').textContent = docs.length;
+  if (!docs.length) { el.innerHTML = emptyState('📄','No document checklists'); sec.style.display=''; return; }
+  sec.style.display = '';
+
+  el.innerHTML = docs.map(rec => {
+    const dl   = Array.isArray(rec.DocList) ? rec.DocList : [];
+    const done = dl.filter(d=>d.status==='received'||d.status==='filed').length;
+    const pct  = dl.length ? Math.round(done/dl.length*100) : 0;
+    const statusColor = rec.OverallStatus==='complete'?'var(--green)':'var(--amber)';
+
+    return `<div class="doc-row">
+      <div class="doc-row-head">
+        <div class="doc-row-title">${esc(rec.Service||'—')}${rec.FY?' · '+rec.FY:''}</div>
+        <span style="font-size:11px;font-weight:700;color:${statusColor};">
+          ${rec.OverallStatus==='complete'?'Complete ✓':'Incomplete'}
+        </span>
+      </div>
+      ${dl.length ? `
+        <div style="height:4px;background:var(--border);border-radius:2px;margin-bottom:10px;">
+          <div style="height:4px;width:${pct}%;background:${pct===100?'var(--green)':'var(--gold)'};border-radius:2px;"></div>
+        </div>
+        <div class="doc-checklist">
+          ${dl.map(d=>`<span class="doc-chip doc-chip-${d.status==='received'||d.status==='filed'?'received':d.status==='na'?'filed':'pending'}">${esc(d.type)} ${d.status==='received'||d.status==='filed'?'✓':d.status==='na'?'N/A':'⏳'}</span>`).join('')}
+        </div>` : '<div style="font-size:12px;color:var(--muted);">No documents added yet</div>'}
+    </div>`;
+  }).join('');
+}
+
+/* ── COMPLIANCE ───────────────────────────────────────────────── */
+function renderCompliance(entries) {
+  const sec = document.getElementById('section-cmp');
+  const el  = document.getElementById('cmp-list');
+  document.getElementById('cmp-badge').textContent = entries.length;
+  if (!entries.length) { el.innerHTML = emptyState('📆','No compliance records'); sec.style.display=''; return; }
+  sec.style.display = '';
+
+  const stBg = {pending:'var(--amber-bg)',in_progress:'var(--blue-bg)',filed:'var(--green-bg)',na:'var(--border)'};
+  const stCl = {pending:'var(--amber)',   in_progress:'var(--blue)',   filed:'var(--green)',   na:'var(--muted)'};
+  const stLb = {pending:'Pending',        in_progress:'In Progress',   filed:'Filed ✓',        na:'N/A'};
+  const fmtD = s => { if(!s) return '—'; try { return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); } catch(e){ return s; }};
+
+  el.innerHTML = entries.map(e => `
+    <div class="cmp-row">
+      <div style="flex:1;">
+        <div class="cmp-type">${esc(e.DeadlineType||'—')}</div>
+        <div class="cmp-date">Due: ${fmtD(e.DueDate)}${e.FiledDate?' · Filed: '+fmtD(e.FiledDate):''}</div>
+      </div>
+      <span class="pill" style="background:${stBg[e.Status]||'var(--border)'};color:${stCl[e.Status]||'var(--muted)'};">
+        ${stLb[e.Status]||esc(e.Status||'—')}
+      </span>
+    </div>`).join('');
+}
+
+/* ── ITR UPLOADS ──────────────────────────────────────────────── */
+function renderITR(uploads) {
+  const sec = document.getElementById('section-itr');
+  const el  = document.getElementById('itr-list');
+  document.getElementById('itr-badge').textContent = uploads.length;
+  if (!uploads.length) { el.innerHTML = emptyState('📋','No ITR submissions'); sec.style.display=''; return; }
+  sec.style.display = '';
+
+  const stBg = {new:'var(--amber-bg)',reviewing:'var(--blue-bg)',filed:'var(--green-bg)'};
+  const stCl = {new:'var(--amber)',   reviewing:'var(--blue)',   filed:'var(--green)'};
+  const stLb = {new:'Submitted',      reviewing:'Under Review',  filed:'Filed ✓'};
+  const fmtD = s => { if(!s) return '—'; try { return new Date(s).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); } catch(e){ return s; }};
+
+  el.innerHTML = uploads.map(u => `
+    <div class="cmp-row">
+      <div style="flex:1;">
+        <div class="cmp-type">${esc(u.FY||'—')} · ${esc(u.IncomeType||'ITR')}</div>
+        <div class="cmp-date">${u.FileCount||0} file(s) · Submitted ${fmtD(u.SubmittedAt)}</div>
+      </div>
+      <span class="pill" style="background:${stBg[u.Status]||'var(--border)'};color:${stCl[u.Status]||'var(--muted)'};">
+        ${stLb[u.Status]||esc(u.Status||'—')}
+      </span>
+    </div>`).join('');
+}
+
+/* ── PDF DOWNLOAD ─────────────────────────────────────────────── */
+function downloadInvoicePDF(invNo) {
+  if (!portalData) return;
+  const inv = (portalData.invoices||[]).find(i => i.InvoiceNo === invNo);
+  if (!inv) return;
+
+  const fmtR = v => '₹' + parseFloat(v||0).toLocaleString('en-IN',{minimumFractionDigits:2});
+  const fmtD = s => { if(!s) return '—'; try { return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}); } catch(e){ return s; }};
+  const qty  = parseFloat(inv.Quantity||1);
+  const rate = parseFloat(inv.Rate||0);
+  const amt  = parseFloat(inv.Amount|| qty*rate);
+  const tax  = parseFloat(inv.TaxAmount||0);
+  const total= parseFloat(inv.TotalAmount|| amt+tax);
+  const paid = parseFloat(inv.PaidAmount||0);
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"/>
+<title>Invoice ${inv.InvoiceNo}</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,sans-serif;background:#f4f4f4;padding:20px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{background:#fff;max-width:700px;margin:0 auto;padding:0;box-shadow:0 0 30px rgba(0,0,0,.12);}
+  .hdr{background:#0E1116;padding:28px 32px;display:flex;justify-content:space-between;align-items:flex-start;}
+  .firm{font-size:16px;font-weight:800;color:#fff;}
+  .firm-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:4px;}
+  .inv-no{font-size:22px;font-weight:800;color:#C9A227;text-align:right;}
+  .badge{display:inline-block;margin-top:4px;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;background:rgba(201,162,39,.2);color:#C9A227;}
+  .stripe{height:3px;background:linear-gradient(90deg,#C9A227,#E8C050,#C9A227);}
+  .body{padding:28px 32px;}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
+  .p-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#9CA3AF;margin-bottom:6px;}
+  .p-name{font-size:15px;font-weight:700;color:#111;}
+  .p-info{font-size:12px;color:#6B7A8D;margin-top:3px;line-height:1.6;}
+  table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  thead tr{background:#0E1116;}
+  thead th{padding:8px 12px;font-size:10px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.6px;text-align:left;}
+  th.r,td.r{text-align:right;}
+  tbody tr{border-bottom:1px solid #F3F4F6;}
+  tbody td{padding:12px;font-size:13px;}
+  .ttl-box{display:flex;justify-content:flex-end;margin-bottom:24px;}
+  .ttl-inner{width:220px;}
+  .trow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F3F4F6;font-size:13px;color:#374151;}
+  .trow.grand{padding:10px 0;border-bottom:none;border-top:2px solid #111;font-size:16px;font-weight:800;}
+  .trow.grand .tv{color:#0F6B4D;}
+  .pay-box{background:#F8FAFF;border:1px solid #DBEAFE;border-radius:8px;padding:14px 16px;margin-bottom:24px;}
+  .pay-title{font-size:10px;font-weight:700;color:#2563EB;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+  .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .pl{font-size:10px;color:#9CA3AF;margin-bottom:2px;}
+  .pv{font-size:13px;font-weight:600;color:#111;}
+  .foot{border-top:1px solid #F3F4F6;padding:14px 32px;display:flex;justify-content:space-between;font-size:11px;color:#9CA3AF;}
+  .print-btn{position:fixed;bottom:20px;right:20px;padding:12px 24px;background:#0E1116;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:system-ui;}
+  @media print{.print-btn{display:none;}@page{size:A4;margin:0;}body{padding:0;background:#fff;}.page{box-shadow:none;}}
+</style></head><body>
+<button class="print-btn" onclick="window.print()">🖨 Save as PDF</button>
+<div class="page">
+  <div class="hdr">
+    <div><div class="firm">CA Reshma Jadhav &amp; Company</div><div class="firm-sub">Chartered Accountants · Satara 415002<br>+91 8177922977 · careshmajadhav@gmail.com</div></div>
+    <div style="text-align:right;">
+      <div class="inv-no">${inv.InvoiceNo||''}</div>
+      <div><span class="badge">${(inv.Status||'draft').toUpperCase()}</span></div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;">Date: ${fmtD(inv.Date)}<br>Due: ${fmtD(inv.DueDate)}</div>
+    </div>
+  </div>
+  <div class="stripe"></div>
+  <div class="body">
+    <div class="parties">
+      <div><div class="p-label">Bill To</div><div class="p-name">${esc(inv.ClientName||'')}</div>
+        <div class="p-info">${inv.ClientPhone?'📱 '+inv.ClientPhone+'<br>':''}${inv.ClientEmail?'✉ '+inv.ClientEmail:''}</div></div>
+      <div style="text-align:right;"><div class="p-label">From</div><div class="p-name">CA Reshma Jadhav &amp; Co.</div>
+        <div class="p-info">careshmajadhav@gmail.com<br>+91 8177922977<br>${inv.FY?'FY '+inv.FY:''}</div></div>
+    </div>
+    <table>
+      <thead><tr><th>#</th><th>Service</th><th class="r">Qty</th><th class="r">Rate</th><th class="r">Amount</th></tr></thead>
+      <tbody><tr><td>1</td><td><strong>${esc(inv.Service||'')}</strong>${inv.Description?'<div style="font-size:11px;color:#9CA3AF;">'+esc(inv.Description)+'</div>':''}</td>
+        <td class="r">${qty}</td><td class="r">${fmtR(rate)}</td><td class="r" style="font-weight:600;">${fmtR(amt)}</td></tr></tbody>
+    </table>
+    <div class="ttl-box"><div class="ttl-inner">
+      <div class="trow"><span>Sub-total</span><span class="tv">${fmtR(amt)}</span></div>
+      ${parseFloat(inv.TaxPct||0)>0?`<div class="trow"><span>GST (${inv.TaxPct}%)</span><span class="tv">${fmtR(tax)}</span></div>`:''}
+      <div class="trow grand"><span>Total</span><span class="tv">${fmtR(total)}</span></div>
+      ${paid>0?`<div class="trow" style="color:#059669;"><span>Paid</span><span>− ${fmtR(paid)}</span></div>`:''}
+    </div></div>
+    <div class="pay-box">
+      <div class="pay-title">💳 Payment Details</div>
+      <div class="pay-grid">
+        <div><div class="pl">UPI ID</div><div class="pv">8177922977@upi</div></div>
+        <div><div class="pl">Reference</div><div class="pv">${inv.InvoiceNo||''}</div></div>
+        <div><div class="pl">Account Name</div><div class="pv">CA Reshma Jadhav</div></div>
+        <div><div class="pl">Due By</div><div class="pv">${fmtD(inv.DueDate)}</div></div>
+      </div>
+    </div>
+    ${inv.Notes?`<div style="background:#FEFCE8;border:1px solid #FDE68A;border-radius:8px;padding:10px 14px;font-size:12px;color:#92400E;">📝 ${esc(inv.Notes)}</div>`:''}
+  </div>
+  <div class="foot"><span>Thank you for your business!</span><span>${inv.InvoiceNo||''} · ${new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}</span></div>
+</div>
+<script>window.onload=()=>document.fonts.ready.then(()=>setTimeout(()=>window.print(),400));<\/script>
+</body></html>`;
+
+  const win = window.open('','_blank');
+  if (win) { win.document.write(html); win.document.close(); }
+  else alert('Please allow popups to download the invoice.');
+}
+
+/* ── HELPERS ──────────────────────────────────────────────────── */
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function emptyState(icon, text) {
+  return `<div class="portal-empty"><div class="portal-empty-icon">${icon}</div>${text}</div>`;
+}
+
+function showError(msg) {
+  document.getElementById('portal-loading').innerHTML =
+    `<div style="padding:32px;text-align:center;color:var(--red);">⚠️ ${msg}<br><br>
+    <button onclick="portalLogout()" style="padding:8px 16px;background:var(--ink);color:#fff;border:none;border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;">Go Back</button>
+    </div>`;
+}
+
+function portalLogout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  portalPhone = ''; portalToken = ''; portalData = null;
+  document.getElementById('login-screen').style.display  = 'flex';
+  document.getElementById('portal-shell').style.display  = 'none';
+  document.getElementById('login-phone').value = '';
+  document.getElementById('login-err').textContent = '';
+  document.getElementById('portal-loading').innerHTML =
+    '<div class="spinner"></div><div style="color:var(--muted);font-size:13px;">Loading your account…</div>';
+  // Reset sections
+  ['section-invoices','section-docs','section-cmp','section-itr','client-banner','portal-cta']
+    .forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+}
+</script>
+</body>
+</html>

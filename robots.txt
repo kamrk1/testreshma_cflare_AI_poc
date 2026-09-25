@@ -1,0 +1,13 @@
+# robots.txt — CA Reshma Jadhav & Company
+# Allow crawling of all public content. Internal/private pages use
+# meta robots "noindex" on the page itself, so they are intentionally
+# left crawlable here (a Disallow would hide that noindex from Google).
+
+User-agent: *
+Allow: /
+
+# Backend API proxy — no crawlable content
+Disallow: /api/
+Disallow: /api-itr
+
+Sitemap: https://careshmajadhav.in/sitemap.xml

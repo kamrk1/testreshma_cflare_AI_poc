@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>GST Registration & Filing in Satara | CA Reshma Jadhav</title>
+  <meta name="description" content="GST registration &amp; GSTR filing in Satara. CA Reshma Jadhav — ITC optimization, GST audit &amp; refunds. Zero penalties. ☎ +91 81779 22977.">
+  <link rel="icon" type="image/png" href="CA India Logo.png"/>
+  
+  <style>
+    :root {
+      --bg-color: #0D1B2A;
+      --card-bg: #162032;
+      --card-border: rgba(201,162,39,0.15);
+      --text-main: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #C9A227;
+      --accent-light: #E8C050;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-stack); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: var(--accent); text-decoration: none; }
+    nav {
+      position: fixed; top: 0; width: 100%; background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 9999; border-bottom: 1px solid var(--card-border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem; height: 54px;
+    }
+    nav .logo { font-size: 15px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .nav-links a { font-size: 13px; color: var(--text-main); opacity: 0.8; transition: opacity 0.3s, color 0.3s; }
+    nav .nav-links a:hover { opacity: 1; color: var(--accent); }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+    
+    .hero {
+      padding: 120px 2rem 4rem; text-align: center;
+      background: radial-gradient(circle at 50% 10%, rgba(201,162,39,0.1) 0%, transparent 70%);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; margin-bottom: 1rem; line-height: 1.1; background: linear-gradient(90deg, #FFFFFF, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-muted); font-weight: 400; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    
+    .section { padding: 2rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+    .card {
+      background: var(--card-bg); border-radius: 24px; padding: 2.5rem; border: 1px solid var(--card-border);
+      margin-bottom: 2rem; opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+    }
+    .card.is-visible { opacity: 1; transform: translateY(0); }
+    .card h2, .card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--accent-light); letter-spacing: -0.02em; }
+    .card p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 1.2rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { list-style: none; padding: 0; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    .card ul li {
+      background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 0.8rem; font-size: 1rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 10px;
+    }
+    
+    .btn-solid { background: var(--bg-color); color: var(--text-main); padding: 1rem 2rem; border-radius: 30px; border: 1px solid var(--accent); font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; justify-content:center; gap: 8px; transition: transform 0.2s, background 0.2s; text-decoration:none; margin-top: 10px; margin-right: 10px;}
+    .btn-solid:hover { transform: scale(1.05); background: var(--accent); color: var(--bg-color); }
+    
+    .related-grid, .cta-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .related-card, .cta-box { background: rgba(255,255,255,0.02); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem; text-align: center; color: var(--text-main); transition: transform 0.2s; display: block; }
+    .related-card:hover, .cta-box:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .related-top img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
+    
+    footer { background: #060D16; padding: 5rem 2rem 2rem; text-align: center; border-top: 2px solid var(--accent); margin-top: 4rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-col p { color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .copyright { color: rgba(255,255,255,0.4); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+  </style>
+  <link rel="stylesheet" href="assets/css/premium.css?v=20260912c"/>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">
+      <span style="color:var(--accent);">CA</span> Reshma Jadhav
+    </a>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="links.html">Links</a>
+      <a href="blog.html">Blog</a>
+      <a href="business-scorecard.html">Scorecard</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" style="padding-bottom: 2rem;">
+    <h1>GST Registration & Return Filing Satara</h1>
+    <p>End-to-end GST compliance — registration, GSTR-1, GSTR-3B, annual returns, ITC optimization and audit support. Zero-penalty filing, every month.</p>
+  </header>
+
+  <div class="section">
+
+  
+    <div class="svc-featured-img">
+      <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=900&q=80" alt="GST Registration & Return Filing in Satara — CA Reshma Jadhav" loading="lazy" onerror="this.parentElement.style.display='none'"/>
+    </div>
+    
+    <div class="card reveal-target">
+      <h2><span>About</span> GST Services in Satara</h2>
+      <p>Goods & Services Tax (GST) compliance is one of the most critical ongoing obligations for any business in India. Missing a filing deadline or making an error in GSTR returns can lead to <strong>penalties, interest charges, and input tax credit (ITC) loss</strong> — directly hurting your cash flow.</p>
+      <p>CA Reshma Jadhav & Company provides end-to-end GST services in Satara — from initial registration to monthly filing, audit support, and ITC optimization. We serve traders, manufacturers, service providers, e-commerce sellers, and professionals across Satara, Karad, and Pune.</p>
+    </div>
+    <div class="card reveal-target">
+      <h2><span>What's</span> Included</h2>
+      <ul class="svc-list">
+        <li>GST Registration — new business GST enrollment within 3–5 working days</li>
+        <li>Monthly & Quarterly GSTR-1, GSTR-3B Filing — zero-penalty, on-time</li>
+        <li>GSTR-9 Annual Return & GST Audit for applicable businesses</li>
+        <li>Input Tax Credit (ITC) Review & Optimization — maximize your refunds</li>
+        <li>GST Notice Handling & Assessment Response</li>
+        <li>GST Refund Processing — export refunds & inverted duty structure</li>
+        <li>E-way Bill & E-invoice Setup & Compliance</li>
+      </ul>
+    </div>
+    <div class="card reveal-target">
+      <h2><span>Who</span> Needs This</h2>
+      <div class="svc-tip"><strong>Mandatory GST Registration:</strong> Any business with annual turnover above ₹40 lakh (goods) or ₹20 lakh (services) must register for GST. E-commerce sellers and interstate suppliers register from day one regardless of turnover.</div>
+      <p>We serve: retail traders and wholesalers, manufacturers, service professionals (consultants, agencies, doctors), construction contractors, exporters, importers, and e-commerce sellers — any business that is GST-registered or needs to register in Satara.</p>
+    </div>
+    <div class="card reveal-target">
+      <h2><span>Why</span> Timely GST Filing Matters</h2>
+      <p>Late GSTR filing attracts <strong>₹50–₹200 per day in late fees</strong> plus 18% annual interest on unpaid tax. Mismatches between GSTR-1 and GSTR-3B can trigger notices and block your customers' ITC claims — damaging business relationships.</p>
+      <p>With CA Reshma Jadhav, your GST filings happen <strong>before the due date, every month</strong> — and we proactively flag ITC mismatches and reconcile your books before they become problems.</p>
+    </div>
+    <div class="svc-cta">
+      <h3>Get GST Registration & Return Filing Satara in Satara</h3>
+      <p>CA Reshma Jadhav handles every step — from registration to filing to ongoing compliance. Free first consultation.</p>
+      <div class="svc-cta-btns">
+        <a href="tel:+918177922977" class="btn-solid">📞 +91 81779 22977</a>
+        <a href="https://wa.me/918177922977?text=Hi%20CA%20Reshma!%20I%20want%20to%20discuss%20CA%20services." target="_blank" class="btn-solid">💬 WhatsApp Now</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="related-h">Explore Other CA Services</p><div class="related-grid"><a href="/income-tax-satara" class="related-card">
+      <div class="related-top"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80" alt="Income Tax & TDS Satara" loading="lazy"/></div>
+      <div class="related-body"><h4>Income Tax & TDS</h4><p>ITR filing · TDS compliance</p></div>
+    </a><a href="/startup-company-registration-satara" class="related-card">
+      <div class="related-top"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=900&q=80" alt="Startup Registration Satara" loading="lazy"/></div>
+      <div class="related-body"><h4>Startup Registration</h4><p>Pvt Ltd · LLP · Partnership</p></div>
+    </a><a href="/accounting-bookkeeping-satara" class="related-card">
+      <div class="related-top"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="Accounting & MIS Satara" loading="lazy"/></div>
+      <div class="related-body"><h4>Accounting & MIS</h4><p>Bookkeeping · Dashboards</p></div>
+    </a><a href="/loan-project-report-satara" class="related-card">
+      <div class="related-top"><img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=900&q=80" alt="Loans & Project Reports Satara" loading="lazy"/></div>
+      <div class="related-body"><h4>Loans & Project Reports</h4><p>Bank-ready project reports</p></div>
+    </a></div>
+  
+  
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 style="display:flex; align-items:center; gap:10px;">
+          <img src="ca%20india%20logo.png" alt="CA India logo" width="28" height="28" style="width:28px;height:28px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;"/>
+          CA Reshma Jadhav
+        </h4>
+        <p><strong style="color:var(--text-main);">CA Reshma Jadhav & Company</strong><br>Chartered Accountant · Satara</p>
+        <p>FCA, DISA (ICAI), M.Com<br>ICAI M.No. 177451 · FRN 158156W</p>
+        <p>E Wing, Samruddhi Apartments<br>Bombay Restaurant Chowk, Sadar Bazar<br>Satara, Maharashtra 415002</p>
+        <p style="margin-top:1rem;"><a href="about.html" style="color:var(--accent-light);font-weight:600;">About the firm&nbsp;→</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <p><a href="startup-company-registration-satara.html" style="color:var(--text-muted);">Company & Startup Registration</a></p>
+        <p><a href="gst-services-satara.html" style="color:var(--text-muted);">GST Registration & Filing</a></p>
+        <p><a href="income-tax-satara.html" style="color:var(--text-muted);">Income Tax & TDS</a></p>
+        <p><a href="accounting-bookkeeping-satara.html" style="color:var(--text-muted);">Accounting & MIS</a></p>
+        <p><a href="loan-project-report-satara.html" style="color:var(--text-muted);">Loans & Project Reports</a></p>
+        <p><a href="business-growth-satara.html" style="color:var(--text-muted);">Business Growth Advisory</a></p>
+        <p><a href="business-itr-filing-satara.html" style="color:var(--text-muted);">Business ITR Filing AY 2026–27</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <p><a href="business-scorecard.html" style="color:var(--text-muted);">Free Business Scorecard</a></p>
+        <p><a href="blog.html" style="color:var(--text-muted);">CA Blog & Updates</a></p>
+        <p><a href="online-itr-filing-pune.html" style="color:var(--text-muted);">Online ITR Filing — Pune</a></p>
+        <p><a href="book-meeting.html" style="color:var(--text-muted);">Schedule a Meeting</a></p>
+        <p><a href="contact.html" style="color:var(--text-muted);">Contact & Directions</a></p>
+        <p><a href="index.html#faq" style="color:var(--text-muted);">FAQs</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Talk to Your CA</h4>
+        <p>📞 <a href="tel:+918177922977" style="color:var(--text-main);font-weight:700;">+91 81779 22977</a></p>
+        <p>✉️ <a href="mailto:careshmajadhav@gmail.com" style="color:var(--text-muted);">careshmajadhav@gmail.com</a></p>
+        <p>🕙 Mon–Sat · 10:00 AM – 7:00 PM<br><span style="font-size:0.85rem;">WhatsApp documents anytime — replies within one working day.</span></p>
+        <div style="margin-top: 1.5rem; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="book-meeting.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Book a Consultation</a>
+          <a href="https://wa.me/918177922977" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 CA Reshma Jadhav & Company · ICAI M.No. 177451 · FRN 158156W · Satara, Maharashtra</p>
+      <p><a href="sitemap.xml" style="color:inherit;">Sitemap</a> · <a href="robots.txt" style="color:inherit;">Robots</a> · 🛠️ Site by RK</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealOptions = { root: null, threshold: 0.1, rootMargin: "0px" };
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, revealOptions);
+    document.querySelectorAll('.reveal-target').forEach(target => {
+      revealObserver.observe(target);
+    });
+  </script>
+  <script src="assets/js/premium.js" defer></script>
+</body>
+</html>

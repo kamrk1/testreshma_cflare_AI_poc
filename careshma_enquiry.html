@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Enquiry | CA Reshma Jadhav &amp; Company</title>
+  <meta name="description" content="Submit your business enquiry to CA Reshma Jadhav. Tax, GST, Startup, Accounting and Loan advisory in Satara.">
+  <link rel="icon" type="image/png" href="CA India Logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:      #0F2A4A;
+      --navy-md:   #1A3F6B;
+      --gold:      #C9980A;
+      --gold-lt:   #F0B429;
+      --gold-pale: #FDF3D0;
+      --cream:     #F8F9FC;
+      --white:     #FFFFFF;
+      --border:    #E4E9F2;
+      --text:      #1A2232;
+      --muted:     #6B7A99;
+      --red:       #DC2626;
+      --shadow-sm: 0 3px 14px rgba(15,42,74,0.09);
+      --shadow-md: 0 8px 32px rgba(15,42,74,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(150deg, #091E37 0%, #0F2A4A 50%, #1A3F6B 100%);
+      padding: 30px 24px 36px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 85%, rgba(201,152,10,0.22) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 15%, rgba(201,152,10,0.14) 0%, transparent 48%);
+      pointer-events: none;
+    }
+    .back-btn {
+      position: absolute; top: 18px; left: 18px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      color: white; padding: 7px 16px;
+      border-radius: 50px; font-size: 13px; font-weight: 600;
+      text-decoration: none; font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.24); }
+    .header-logo {
+      width: 72px; height: 72px; object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid rgba(240,180,41,0.45);
+      box-shadow: 0 0 0 6px rgba(240,180,41,0.09);
+      margin: 0 auto 16px; display: block;
+      background: rgba(255,255,255,0.06);
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(240,180,41,0.15);
+      border: 1px solid rgba(240,180,41,0.40);
+      color: var(--gold-lt);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 1.6px; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 50px; margin-bottom: 12px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; color: white; font-weight: 700; margin-bottom: 6px;
+    }
+    .header p { color: rgba(255,255,255,0.72); font-size: 14px; line-height: 1.6; }
+
+    /* ── WRAPPER ── */
+    .form-wrapper {
+      max-width: 540px; margin: 0 auto; padding: 24px 18px 48px;
+    }
+
+    /* ── SERVICE BADGE ── */
+    .service-badge {
+      background: var(--navy); color: white;
+      border-radius: 14px; padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .badge-icon { font-size: 30px; flex-shrink: 0; }
+    .badge-lbl  { font-size: 11px; color: var(--gold-lt); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .badge-name { font-size: 15px; font-weight: 700; margin-top: 2px; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: var(--white);
+      border-radius: 20px; padding: 24px 20px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold-lt));
+    }
+
+    /* ── FIELDS ── */
+    .field-group { margin-bottom: 16px; }
+    .field-group label {
+      display: block; font-size: 12px; font-weight: 700;
+      color: var(--navy); text-transform: uppercase;
+      letter-spacing: 0.7px; margin-bottom: 7px;
+    }
+    .field-group label span { color: var(--red); }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%; padding: 13px 14px;
+      border: 2px solid var(--border); border-radius: 10px;
+      font-size: 15px; font-family: 'Inter', sans-serif;
+      color: var(--text); background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+      appearance: none;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,152,10,0.14);
+      background: white;
+    }
+    .field-group textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .field-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7A99' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px; cursor: pointer;
+    }
+
+    /* ── ROW 2 ── */
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 420px) { .row-2 { grid-template-columns: 1fr; } }
+
+    /* ── SECTION SEPARATOR ── */
+    .form-sep {
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin: 22px 0 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .form-sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── CHIPS CHECKBOXES ── */
+    .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip-item {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--cream); border: 2px solid var(--border);
+      border-radius: 50px; padding: 7px 14px;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 13px; font-weight: 500; color: var(--text);
+      user-select: none;
+    }
+    .chip-item:hover { border-color: var(--gold); }
+    .chip-item input[type="checkbox"] {
+      width: 15px; height: 15px; accent-color: var(--gold);
+      flex-shrink: 0; cursor: pointer;
+    }
+    .chip-item input[type="checkbox"]:focus { box-shadow: none; }
+    .chip-item.checked {
+      border-color: var(--gold); background: var(--gold-pale);
+      color: var(--navy);
+    }
+
+    /* ── SUBMIT ── */
+    .btn-submit {
+      display: block; width: 100%; padding: 16px;
+      background: var(--navy); color: white; border: none;
+      border-radius: 12px; font-family: 'Inter', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.4px;
+      cursor: pointer; margin-top: 24px;
+      box-shadow: 0 6px 22px rgba(15,42,74,0.30);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--navy-md); transform: translateY(-2px); }
+
+    /* ── ERROR STATE ── */
+    .field-error { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(220,38,38,0.12) !important; }
+
+    /* ── QUICK CONTACT ── */
+    .quick-contact { margin-top: 20px; text-align: center; }
+    .quick-contact p { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .quick-btns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .quick-btn {
+      display: block; padding: 13px 6px;
+      border-radius: 12px; text-decoration: none;
+      font-size: 13px; font-weight: 700; text-align: center;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .quick-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .qb-call  { background: var(--navy); color: white; }
+    .qb-wa    { background: #25D366; color: white; }
+    .qb-email { background: #EA4335; color: white; }
+
+    /* ── NOTE ── */
+    .note {
+      background: var(--gold-pale); border: 1px solid rgba(201,152,10,0.35);
+      border-radius: 10px; padding: 12px 14px;
+      font-size: 13px; color: var(--text); margin-top: 16px; line-height: 1.6;
+    }
+    .note strong { color: var(--navy); }
+
+    /* ── SUCCESS ── */
+    .success-screen {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .success-icon { font-size: 64px; margin-bottom: 16px; display: block; }
+    .success-screen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; color: var(--navy); margin-bottom: 10px;
+    }
+    .success-screen p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .back-home {
+      display: inline-block; margin-top: 22px;
+      padding: 13px 32px; background: var(--navy); color: white;
+      border-radius: 50px; text-decoration: none;
+      font-weight: 700; font-size: 15px;
+    }
+
+    /* ── COPYRIGHT ── */
+    .copyright-bar {
+      background: var(--navy); color: rgba(255,255,255,0.55);
+      font-size: 12px; text-align: center;
+      padding: 12px 16px; margin-top: 24px;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; align-items: center; gap: 8px;
+    }
+    .credit-link { color: var(--gold-lt); font-weight: 700; text-decoration: none; }
+    .credit-link:hover { color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html" class="back-btn">← Back</a>
+    <img src="CA India Logo.png" alt="CA Logo" class="header-logo" />
+    <div class="header-badge">⚖️ &nbsp;CA Reshma Jadhav &amp; Company</div>
+    <h1>Business Enquiry Form</h1>
+    <p>Tell us your requirement and we'll get back within 24 working hours<br>with the right guidance for your business.</p>
+  </div>
+
+  <div class="form-wrapper">
+
+    <!-- Service badge -->
+    <div class="service-badge" id="serviceBadge">
+      <div class="badge-icon" id="badgeIcon">📋</div>
+      <div>
+        <div class="badge-lbl">You're enquiring about</div>
+        <div class="badge-name" id="badgeName">CA Services</div>
+      </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card" id="formCard">
+
+      <div class="form-sep">Your Details</div>
+
+      <div class="row-2">
+        <div class="field-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" id="name" placeholder="Your full name" autocomplete="name" />
+        </div>
+        <div class="field-group">
+          <label>Business / Firm Name</label>
+          <input type="text" id="business_name" placeholder="If applicable" />
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field-group">
+          <label>Mobile Number <span>*</span></label>
+          <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
+        </div>
+        <div class="field-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field-group">
+          <label>City</label>
+          <input type="text" id="city" placeholder="Satara, Pune, Mumbai…" />
+        </div>
+        <div class="field-group">
+          <label>Business Stage</label>
+          <select id="stage">
+            <option value="">— Select —</option>
+            <option value="idea">Just an idea</option>
+            <option value="new">New business (0–2 yrs)</option>
+            <option value="growing">Growing (2–7 yrs)</option>
+            <option value="established">Established (7+ yrs)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-sep">Service Required</div>
+
+      <div class="field-group">
+        <label>Service Interested In <span>*</span></label>
+        <select id="service">
+          <option value="">— Select service —</option>
+          <option value="company_startup">🏢 Company &amp; Startup</option>
+          <option value="business_growth">📈 Business Growth Solutions</option>
+          <option value="gst">📋 GST Services</option>
+          <option value="income_tax">💰 Income Tax</option>
+          <option value="dashboard_accounting">📊 Financial Dashboard &amp; Accounting</option>
+          <option value="loans_projects">🏦 Loans &amp; Projects</option>
+          <option value="other">🗂️ Other / Not sure</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Additional Interests (select all that apply)</label>
+        <div class="chip-grid">
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="company_reg" id="chk1">
+            <label for="chk1">Company / LLP Registration</label>
+          </div>
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="gst_returns" id="chk2">
+            <label for="chk2">GST Returns</label>
+          </div>
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="tax_filing" id="chk3">
+            <label for="chk3">Income Tax Filing</label>
+          </div>
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="loan" id="chk4">
+            <label for="chk4">Bank Loan / Project Report</label>
+          </div>
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="accounting" id="chk5">
+            <label for="chk5">Accounting / MIS</label>
+          </div>
+          <div class="chip-item" onclick="toggleChip(this)">
+            <input type="checkbox" value="startup" id="chk6">
+            <label for="chk6">Startup Advisory</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-sep">More Details</div>
+
+      <div class="field-group">
+        <label>Briefly Describe Your Requirement <span>*</span></label>
+        <textarea id="message" placeholder="e.g. I need GST registration and monthly return filing for my new trading business in Satara…"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Approx. Yearly Budget (optional)</label>
+        <select id="budget">
+          <option value="">Not decided yet</option>
+          <option value="lt25000">Below ₹25,000</option>
+          <option value="25000_75000">₹25,000 – ₹75,000</option>
+          <option value="75000_150000">₹75,000 – ₹1,50,000</option>
+          <option value="gt150000">Above ₹1,50,000</option>
+        </select>
+      </div>
+
+      <div class="note">
+        <strong>⚡ Quick response:</strong> CA Reshma's team typically responds within 24 working hours via WhatsApp or phone call. Ensure your mobile number is correct.
+      </div>
+
+      <button class="btn-submit" onclick="submitEnquiry()">Submit Enquiry → Get Called Back</button>
+
+    </div><!-- end form-card -->
+
+    <!-- Quick contact -->
+    <div class="quick-contact">
+      <p>Or reach us directly right now:</p>
+      <div class="quick-btns">
+        <a href="tel:+918177922977" class="quick-btn qb-call">📱 Call</a>
+        <a href="https://wa.me/918177922977?text=Hi%20CA%20Reshma%2C%20I%20want%20to%20discuss%20about%20CA%20services." target="_blank" class="quick-btn qb-wa">💬 WhatsApp</a>
+        <a href="mailto:careshmajadhav@gmail.com" class="quick-btn qb-email">✉️ Email</a>
+      </div>
+    </div>
+
+    <!-- Success screen -->
+    <div class="success-screen" id="successScreen">
+      <span class="success-icon">🎉</span>
+      <h2>Enquiry Submitted!</h2>
+      <p>Thank you! CA Reshma Jadhav's team will reach out via WhatsApp or phone within 24 working hours.<br><br>
+      While you wait, explore our services for more information.</p>
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+
+  </div><!-- end form-wrapper -->
+
+  <!-- Copyright Bar -->
+  <div class="copyright-bar">
+    <span>© 2025 CA Reshma Jadhav &amp; Company. All rights reserved.</span>
+    <a href="https://wa.me/919004640769" target="_blank" class="credit-link">🛠️ Site by RK</a>
+  </div>
+
+  <script>
+    // Service label map
+    const serviceMap = {
+      company_startup:      { icon: '🏢', name: 'Company & Startup' },
+      business_growth:      { icon: '📈', name: 'Business Growth Solutions' },
+      gst:                  { icon: '📋', name: 'GST Services' },
+      income_tax:           { icon: '💰', name: 'Income Tax' },
+      dashboard_accounting: { icon: '📊', name: 'Financial Dashboard & Accounting' },
+      loans_projects:       { icon: '🏦', name: 'Loans & Projects' },
+      other:                { icon: '🗂️', name: 'Other / Not sure' },
+    };
+
+    // Pre-fill from URL param
+    const params = new URLSearchParams(window.location.search);
+    const svcKey = params.get('service');
+    if (svcKey && serviceMap[svcKey]) {
+      document.getElementById('badgeIcon').textContent = serviceMap[svcKey].icon;
+      document.getElementById('badgeName').textContent = serviceMap[svcKey].name;
+      const sel = document.getElementById('service');
+      for (let o of sel.options) { if (o.value === svcKey) { o.selected = true; break; } }
+    }
+
+    // Sync badge on dropdown change
+    document.getElementById('service').addEventListener('change', function() {
+      const v = this.value;
+      document.getElementById('badgeIcon').textContent = v && serviceMap[v] ? serviceMap[v].icon : '📋';
+      document.getElementById('badgeName').textContent = v && serviceMap[v] ? serviceMap[v].name : 'CA Services';
+    });
+
+    // Chip toggle
+    function toggleChip(item) {
+      const cb = item.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      item.classList.toggle('checked', cb.checked);
+    }
+    document.querySelectorAll('.chip-item input').forEach(cb => {
+      cb.addEventListener('click', e => e.stopPropagation());
+      cb.addEventListener('change', function() {
+        this.closest('.chip-item').classList.toggle('checked', this.checked);
+      });
+    });
+
+    // Validation
+    function setError(id) {
+      document.getElementById(id).classList.add('field-error');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    function clearErrors() {
+      document.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
+    }
+
+    // Submit → WhatsApp
+    function submitEnquiry() {
+      clearErrors();
+      const name    = document.getElementById('name').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!name)    { setError('name');    return; }
+      if (!phone)   { setError('phone');   return; }
+      if (!service) { setError('service'); return; }
+      if (!message) { setError('message'); return; }
+
+      const biz    = document.getElementById('business_name').value.trim();
+      const email  = document.getElementById('email').value.trim();
+      const city   = document.getElementById('city').value.trim();
+      const stage  = document.getElementById('stage').value;
+      const budget = document.getElementById('budget').value;
+      const svcLabel = serviceMap[service] ? serviceMap[service].icon + ' ' + serviceMap[service].name : service;
+
+      const extras = [];
+      document.querySelectorAll('.chip-item input:checked').forEach(cb => extras.push(cb.value));
+
+      let stageLabel = { idea:'Just an idea', new:'New business (0–2 yrs)', growing:'Growing (2–7 yrs)', established:'Established (7+ yrs)' }[stage] || '';
+      let budgetLabel = { lt25000:'Below ₹25,000', '25000_75000':'₹25,000–₹75,000', '75000_150000':'₹75,000–₹1,50,000', gt150000:'Above ₹1,50,000' }[budget] || 'Not decided';
+
+      let msg =
+        "─────────────────────────────\n" +
+        "*CA Reshma Jadhav — Website Enquiry*\n" +
+        "─────────────────────────────\n" +
+        "*Name:* " + name + "\n" +
+        "*Mobile:* " + phone + "\n" +
+        (email  ? "*Email:* " + email + "\n" : "") +
+        (biz    ? "*Business/Firm:* " + biz + "\n" : "") +
+        (city   ? "*City:* " + city + "\n" : "") +
+        (stageLabel ? "*Business Stage:* " + stageLabel + "\n" : "") +
+        "*Service:* " + svcLabel + "\n" +
+        (extras.length ? "*Also interested in:* " + extras.join(', ') + "\n" : "") +
+        "*Budget:* " + budgetLabel + "\n" +
+        "*Requirement:*\n" + message + "\n";
+
+      window.open("https://wa.me/918177922977?text=" + encodeURIComponent(msg), "_blank");
+
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('serviceBadge').style.display = 'none';
+      document.querySelector('.quick-contact').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

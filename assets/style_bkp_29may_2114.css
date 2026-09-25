@@ -1,0 +1,369 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+h1 {
+  color: #004aad;
+}
+.tagline {
+  font-style: italic;
+  color: #666;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul li {
+  background: #e9f0ff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.contact-buttons {
+  margin-top: 20px;
+}
+.btn {
+  display: inline-block;
+  margin: 5px 10px 5px 0;
+  padding: 10px 15px;
+  background-color: #004aad;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn:hover {
+  background-color: #002d73;
+}
+iframe {
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.service-item img {
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+}
+/* Center the heading */
+h2 {
+  text-align: center;
+}
+
+/* Center the contact buttons container */
+.contact-buttons {
+  text-align: center;
+}
+
+/* Optional: Style the buttons */
+/* Style the buttons with blue background and white text */
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #0056b3; /* Dark blue color */
+  color: white; /* White text */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+}
+/* Style for the service bundle container */
+.service-bundle {
+  background-color: #0056b3; /* Dark blue background */
+  color: white; /* White text */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px; /* Adjust width as needed */
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+/* Style for the service image */
+.service-image {
+  width: 100%; /* Make image fill the container */
+  height: auto;
+  border-radius: 10px; /* Optional: Rounded corners for the image */
+}
+
+/* Style for the service name */
+.service-name {
+  margin-top: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.service-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+  border: 3px solid #002366; /* Dark blue */
+}
+.enquiry-button {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: 10px auto 0 auto;
+  padding: 10px 0;
+  background-color: #003366; /* Dark Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+.service-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+  border: 2px solid #003366; /* dark blue border */
+}
+/* Floating footer */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 1000;
+}
+
+/* Icon buttons */
+.fixed-footer a img {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s;
+}
+
+.fixed-footer a:hover img {
+  transform: scale(1.1);
+}
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f7; /* iPhone-style grey */
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); /* subtle shadow for elevation */
+}
+/* Light Theme (Default) */
+body.light-theme {
+  background-color: #f9f9f9;
+  color: #333;
+}
+.light-theme .btn,
+.light-theme .service-bundle {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Dark Theme */
+body.dark-theme {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+.dark-theme .btn,
+.dark-theme .service-bundle {
+  background-color: #333;
+  color: white;
+}
+.dark-theme ul li {
+  background-color: #1e1e1e;
+}
+.dark-theme .enquiry-button {
+  background-color: #444;
+}
+/* Toggle Switch Styles */
+.theme-switch {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+}
+.theme-switch input {
+  display: none;
+}
+.theme-switch .slider {
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  display: inline-block;
+  border-radius: 26px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.theme-switch .slider::before {
+  content: '🌞';
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  line-height: 22px;
+  transition: transform 0.3s;
+}
+input:checked + .slider::before {
+  content: '🌙';
+  transform: translateX(24px);
+}
+input:checked + .slider {
+  background-color: #666;
+}
+body {
+  padding-bottom: 70px; /* Enough space for footer */
+}
+
+
+
+
+/* Horizontal slide container */
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Slider wraps multiple slides side by side */
+.slider {
+  display: flex;
+  width: 200%; /* for 2 slides */
+  height: 100vh;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Each slide occupies full viewport */
+.slide {
+  flex: 0 0 100%;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Dot pagination */
+.dots {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 1002;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #004aad;
+}
+
+
+
+/* Horizontal slide layout */
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.slider {
+  display: flex;
+  width: 200%; /* Adjust if adding more slides */
+  transition: transform 0.4s ease;
+}
+.slide {
+  flex: 0 0 100vw;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.dots {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 1002;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #004aad;
+}
+
+
+
+/* Final fix: enforce full viewport widths and heights for slides */
+.slider-container {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 200vw; /* 2 slides = 200vw */
+  height: 100vh;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  flex: 0 0 100vw;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}

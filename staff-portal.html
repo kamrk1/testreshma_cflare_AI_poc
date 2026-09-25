@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Staff Portal | CA Reshma Jadhav & Company</title>
+<link rel="icon" type="image/png" href="CA India Logo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+  rel="stylesheet" media="print" onload="this.media='all'"/>
+<style>
+:root {
+  --ink:     #0E1116; --ink-lt: #4A5568; --muted: #6B7A8D;
+  --white:   #FFFFFF; --mist:   #F7F8FA; --border: #E8ECF2;
+  --gold:    #C9A227; --gold-lt: #E8C050;
+  --green:   #059669; --green-bg: #ECFDF5;
+  --blue:    #2563EB; --blue-bg:  #EFF6FF;
+  --amber:   #D97706; --amber-bg: #FFFBEB;
+  --red:     #DC2626; --red-bg:   #FEF2F2;
+  --r: 12px; --r-lg: 18px; --sh: 0 2px 12px rgba(14,17,22,.07);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Outfit',system-ui,sans-serif; background:var(--mist);
+  color:var(--ink); min-height:100vh; -webkit-font-smoothing:antialiased; }
+
+/* Login */
+.login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center;
+  padding:24px; background:linear-gradient(160deg,#060E18 0%,#0D1B2A 60%,#0a1520 100%);
+  position:relative; overflow:hidden; }
+.login-screen::before { content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 20% 80%,rgba(201,162,39,.12) 0%,transparent 55%); }
+.login-card { position:relative; z-index:2; background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10); border-radius:24px; padding:44px 36px;
+  width:min(380px,100%); text-align:center; backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px); }
+.login-logo { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:24px; }
+.logo-mark { width:40px; height:40px; border-radius:10px; background:var(--gold);
+  display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:800; color:var(--ink); }
+.login-firm-name { font-size:12px; font-weight:700; color:#fff; text-align:left; }
+.login-firm-sub  { font-size:10px; color:rgba(255,255,255,.4); text-align:left; }
+.login-title { font-size:24px; font-weight:800; color:#fff; margin-bottom:4px; }
+.login-sub   { font-size:13px; color:rgba(255,255,255,.4); margin-bottom:28px; }
+.login-field { margin-bottom:14px; text-align:left; }
+.login-field label { font-size:11px; font-weight:700; color:rgba(255,255,255,.45);
+  text-transform:uppercase; letter-spacing:.8px; display:block; margin-bottom:6px; }
+.login-field input { width:100%; padding:13px 16px; background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.12); border-radius:12px;
+  font-size:16px; color:#fff; font-family:'Outfit',sans-serif; outline:none; }
+.login-field input:focus { border-color:var(--gold); }
+.login-btn { width:100%; padding:14px; background:var(--gold); border:none; border-radius:12px;
+  font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; margin-top:4px;
+  font-family:'Outfit',sans-serif; }
+.login-err { font-size:12px; color:#ff6b6b; margin-top:10px; min-height:18px; }
+
+/* Shell */
+.shell { display:none; min-height:100vh; flex-direction:column; }
+.header { background:var(--ink); padding:12px 16px;
+  display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; }
+.header-left { display:flex; align-items:center; gap:10px; }
+.hdr-logo { width:30px; height:30px; border-radius:7px; background:var(--gold);
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--ink); }
+.hdr-firm { font-size:11px; font-weight:700; color:rgba(255,255,255,.6); }
+.staff-name { font-size:13px; font-weight:700; color:var(--gold-lt); }
+.signout-btn { padding:5px 12px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
+  border-radius:6px; color:rgba(255,255,255,.5); font-size:11px; cursor:pointer; font-family:'Outfit',sans-serif; }
+
+/* Body */
+.body { padding:16px 16px 80px; max-width:640px; margin:0 auto; }
+
+/* Stat strip */
+.stat-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:16px; }
+.stat-card { background:var(--white); border-radius:var(--r); padding:12px 14px;
+  box-shadow:var(--sh); border:1.5px solid var(--border); text-align:center; }
+.stat-num { font-size:22px; font-weight:800; color:var(--ink); }
+.stat-lbl { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-top:2px; }
+
+/* Filter pills */
+.pills { display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap; }
+.pill-btn { padding:7px 14px; border-radius:20px; border:1.5px solid var(--border);
+  background:var(--white); color:var(--muted); font-size:12px; font-weight:700;
+  cursor:pointer; font-family:'Outfit',sans-serif; transition:.15s; }
+.pill-btn.active { background:var(--ink); border-color:var(--ink); color:#fff; }
+
+/* Task card */
+.task-card { background:var(--white); border-radius:var(--r-lg); border:1.5px solid var(--border);
+  margin-bottom:12px; box-shadow:var(--sh); overflow:hidden; transition:.2s; }
+.task-card.overdue { border-color:#FECACA; }
+.task-top { padding:14px 16px; }
+.task-header { display:flex; align-items:flex-start; gap:10px; margin-bottom:8px; }
+.task-priority { width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:6px; }
+.task-title { font-size:15px; font-weight:700; color:var(--ink); flex:1; }
+.task-due { font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; }
+.due-ok      { background:var(--blue-bg);  color:var(--blue); }
+.due-today   { background:var(--amber-bg); color:var(--amber); }
+.due-overdue { background:var(--red-bg);   color:var(--red); }
+.task-meta { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+.meta-item { font-size:11px; color:var(--muted); }
+.meta-item strong { color:var(--ink); font-weight:600; }
+.task-desc { font-size:12px; color:var(--ink-lt); background:var(--mist);
+  border-radius:8px; padding:8px 10px; margin-bottom:10px; line-height:1.5; }
+.task-notes { font-size:11px; color:var(--muted); font-style:italic; margin-bottom:10px;
+  white-space:pre-line; }
+/* Actions */
+.task-actions { display:flex; gap:8px; padding:12px 16px; border-top:1px solid var(--border);
+  background:var(--mist); flex-wrap:wrap; }
+.ta-btn { padding:8px 14px; border:none; border-radius:8px; font-size:12px; font-weight:700;
+  cursor:pointer; font-family:'Outfit',sans-serif; transition:.15s; }
+.ta-green  { background:var(--green-bg); color:var(--green); }
+.ta-blue   { background:var(--blue-bg);  color:var(--blue); }
+.ta-ghost  { background:var(--border);   color:var(--ink-lt); }
+.ta-amber  { background:var(--amber-bg); color:var(--amber); }
+/* Note input */
+.note-row { display:flex; gap:8px; padding:10px 16px; border-top:1px solid var(--border); }
+.note-input { flex:1; padding:8px 12px; border:1.5px solid var(--border); border-radius:8px;
+  font-size:13px; font-family:'Outfit',sans-serif; outline:none; }
+.note-input:focus { border-color:var(--gold); }
+.note-send { padding:8px 14px; background:var(--ink); color:#fff; border:none; border-radius:8px;
+  font-size:12px; font-weight:700; cursor:pointer; font-family:'Outfit',sans-serif; }
+/* Status badge */
+.status-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; }
+.s-open        { background:var(--amber-bg); color:var(--amber); }
+.s-in_progress { background:var(--blue-bg);  color:var(--blue); }
+.s-done        { background:var(--green-bg); color:var(--green); }
+/* Empty */
+.empty { text-align:center; padding:40px 20px; color:var(--muted); }
+.empty-icon { font-size:36px; margin-bottom:12px; }
+/* Spinner */
+@keyframes spin { to { transform:rotate(360deg); } }
+.spinner { width:24px; height:24px; border:3px solid var(--border);
+  border-top-color:var(--gold); border-radius:50%; animation:spin .7s linear infinite; margin:32px auto 12px; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-screen" id="login-screen" style="display:flex;">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-mark">R</div>
+      <div><div class="login-firm-name">CA Reshma Jadhav & Co.</div>
+        <div class="login-firm-sub">Staff Portal</div></div>
+    </div>
+    <div class="login-title">Staff Login</div>
+    <div class="login-sub">Enter your registered mobile number</div>
+    <div class="login-field">
+      <label>Mobile Number</label>
+      <input type="tel" id="login-phone" placeholder="98765 43210" autocomplete="tel"
+        onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="login-btn" id="login-btn" onclick="doLogin()">Access My Tasks&nbsp;→</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- SHELL -->
+<div class="shell" id="shell" style="display:none;">
+  <div class="header">
+    <div class="header-left">
+      <div class="hdr-logo">R</div>
+      <div><div class="hdr-firm">CA Reshma Jadhav & Co.</div>
+        <div class="staff-name" id="staff-name-hdr">Loading…</div></div>
+    </div>
+    <button class="signout-btn" onclick="doSignout()">Sign Out</button>
+  </div>
+
+  <div class="body">
+
+    <!-- Stat strip -->
+    <div class="stat-strip" id="stat-strip">
+      <div class="stat-card"><div class="stat-num" id="st-open">—</div><div class="stat-lbl">Open</div></div>
+      <div class="stat-card"><div class="stat-num" id="st-prog" style="color:var(--blue);">—</div><div class="stat-lbl">In Progress</div></div>
+      <div class="stat-card"><div class="stat-num" id="st-over" style="color:var(--red);">—</div><div class="stat-lbl">Overdue</div></div>
+      <div class="stat-card"><div class="stat-num" id="st-done" style="color:var(--green);">—</div><div class="stat-lbl">Done</div></div>
+    </div>
+
+    <!-- Filter pills -->
+    <div class="pills">
+      <button class="pill-btn active" id="f-today"       onclick="setFilter('today')">📅 Due Today</button>
+      <button class="pill-btn"        id="f-open"        onclick="setFilter('open')">Open</button>
+      <button class="pill-btn"        id="f-in_progress" onclick="setFilter('in_progress')">In Progress</button>
+      <button class="pill-btn"        id="f-done"        onclick="setFilter('done')">Done ✓</button>
+    </div>
+
+    <!-- Task list -->
+    <div id="task-list">
+      <div class="spinner"></div>
+      <div style="text-align:center;color:var(--muted);font-size:13px;">Loading your tasks…</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const GAS_URL    = 'https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec';
+const SESSION_KEY = 'ca_staff_session';
+let staffPhone = '', staffToken = '', staffData = null, currentFilter = 'today';
+
+// ── INIT ─────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  // Auto-fill from URL param (CA sends link with phone pre-filled)
+  const params = new URLSearchParams(window.location.search);
+  const urlPhone = params.get('phone');
+  if (urlPhone) document.getElementById('login-phone').value = urlPhone;
+
+  // Restore session
+  try {
+    const s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+    if (s && s.token && s.phone) {
+      staffPhone = s.phone; staffToken = s.token;
+      showShell(s.name, s.role);
+      loadTasks(currentFilter);
+      return;
+    }
+  } catch(e) {}
+  document.getElementById('login-phone').focus();
+});
+
+// ── LOGIN ─────────────────────────────────────────────────────────
+async function doLogin() {
+  const raw = document.getElementById('login-phone').value.replace(/\D/g,'');
+  const err = document.getElementById('login-err');
+  const btn = document.getElementById('login-btn');
+  err.textContent = '';
+  if (!raw || raw.length < 10) {
+    err.textContent = '⚠️ Please enter a valid 10-digit mobile number.'; return;
+  }
+  btn.textContent = 'Checking…'; btn.disabled = true;
+
+  // 12-second timeout — prevents stuck "Checking..." state
+  const ctrl  = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 12000);
+
+  try {
+    const res  = await fetch(GAS_URL + '?action=staff_login&phone=' + raw,
+      { redirect:'follow', cache:'no-cache', signal: ctrl.signal });
+    clearTimeout(timer);
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch(je) {
+      // GAS returned HTML (not yet deployed or error)
+      err.textContent = '⚠️ Server error — please ask CA Reshma to check the setup.';
+      btn.textContent = 'Access My Tasks →'; btn.disabled = false;
+      return;
+    }
+    if (data.ok) {
+      staffPhone = data.phone; staffToken = data.token;
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+        phone:data.phone, token:data.token, name:data.name, role:data.role
+      }));
+      showShell(data.name, data.role);
+      loadTasks('today');
+    } else {
+      // Clear, friendly error messages
+      if (data.error && data.error.includes('No staff account')) {
+        err.textContent = '❌ This number is not registered as staff. Please contact CA Reshma Jadhav.';
+      } else {
+        err.textContent = '❌ ' + (data.error || 'Login failed. Contact CA Reshma.');
+      }
+    }
+  } catch(e) {
+    clearTimeout(timer);
+    if (e.name === 'AbortError') {
+      err.textContent = '⏱ Request timed out. Please check your connection and try again.';
+    } else {
+      err.textContent = '⚠️ Connection failed. Please try again.';
+    }
+  }
+  btn.textContent = 'Access My Tasks →'; btn.disabled = false;
+}
+
+function showShell(name, role) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('shell').style.display = 'flex';
+  document.getElementById('staff-name-hdr').textContent = (name||'Staff') + (role?' · '+role:'');
+}
+
+function doSignout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  staffPhone = ''; staffToken = '';
+  document.getElementById('shell').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('task-list').innerHTML = '';
+  document.getElementById('login-phone').value = '';
+  document.getElementById('login-err').textContent = '';
+}
+
+// ── FILTER ────────────────────────────────────────────────────────
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('f-' + f)?.classList.add('active');
+  loadTasks(f);
+}
+
+// ── LOAD TASKS ────────────────────────────────────────────────────
+async function loadTasks(filter) {
+  const el = document.getElementById('task-list');
+  el.innerHTML = '<div class="spinner"></div><div style="text-align:center;color:var(--muted);font-size:13px;">Loading…</div>';
+  try {
+    const url  = GAS_URL + '?action=staff_tasks&phone=' + staffPhone + '&token=' + staffToken + '&filter=' + filter;
+    const res  = await fetch(url, {redirect:'follow',cache:'no-cache'});
+    const data = JSON.parse(await res.text());
+    if (!data.ok) {
+      if (data.error?.includes('expired')) { doSignout(); return; }
+      el.innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div>' + esc(data.error||'Failed') + '</div>';
+      return;
+    }
+    staffData = data;
+    // Update stats
+    const s = data.summary || {};
+    document.getElementById('st-open').textContent = s.open || 0;
+    document.getElementById('st-prog').textContent = s.in_progress || 0;
+    document.getElementById('st-over').textContent = s.overdue || 0;
+    document.getElementById('st-done').textContent = s.done || 0;
+    renderTasks(data.tasks || []);
+  } catch(e) {
+    el.innerHTML = '<div class="empty"><div class="empty-icon">⚠️</div>Could not load tasks</div>';
+  }
+}
+
+// ── RENDER TASKS ──────────────────────────────────────────────────
+function renderTasks(tasks) {
+  const el    = document.getElementById('task-list');
+  const today = new Date().toISOString().slice(0,10);
+  if (!tasks.length) {
+    const msgs = {today:'No tasks due today ✅',open:'No open tasks',in_progress:'Nothing in progress',done:'No completed tasks'};
+    el.innerHTML = '<div class="empty"><div class="empty-icon">' + (currentFilter==='done'?'✅':'🎉') + '</div>'
+      + (msgs[currentFilter]||'No tasks') + '</div>';
+    return;
+  }
+  el.innerHTML = tasks.map(t => {
+    const priBg  = {high:'var(--red)',medium:'var(--amber)',low:'var(--green)'}[t.Priority||'medium'] || 'var(--amber)';
+    const isOver = t.DueDate && t.DueDate < today && t.Status !== 'done';
+    const isTod  = t.DueDate === today;
+    const dueCls = isOver ? 'due-overdue' : isTod ? 'due-today' : 'due-ok';
+    const dueLbl = isOver ? '⚠️ Overdue' : isTod ? '📅 Today' : (t.DueDate ? fmtD(t.DueDate) : '—');
+    const stCls  = 's-' + (t.Status||'open');
+    const stLbl  = {open:'Open',in_progress:'In Progress',done:'Done ✓'}[t.Status||'open'] || t.Status;
+
+    return '<div class="task-card' + (isOver?' overdue':'') + '" id="tc-' + t.ID + '">'
+      // Top
+      + '<div class="task-top">'
+      + '<div class="task-header">'
+      + '<div class="task-priority" style="background:'+priBg+';margin-top:8px;"></div>'
+      + '<div class="task-title">' + esc(t.Title||'Untitled') + '</div>'
+      + '<span class="task-due ' + dueCls + '">' + dueLbl + '</span>'
+      + '</div>'
+      // Meta grid
+      + '<div class="task-meta">'
+      + '<div class="meta-item">👤 Client: <strong>' + esc(t.ClientName||'—') + '</strong></div>'
+      + '<div class="meta-item">🏷️ Service: <strong>' + esc(t.Service||'—') + '</strong></div>'
+      + '<div class="meta-item">📊 Priority: <strong>' + esc(t.Priority||'medium') + '</strong></div>'
+      + '<div class="meta-item">📋 Status: <span class="status-badge ' + stCls + '">' + stLbl + '</span></div>'
+      + '</div>'
+      // Description
+      + (t.Description ? '<div class="task-desc">' + esc(t.Description) + '</div>' : '')
+      // Notes
+      + (t.Notes ? '<div class="task-notes">📝 ' + esc(t.Notes) + '</div>' : '')
+      + '</div>'
+      // Actions (hide if done)
+      + (t.Status !== 'done' ? '<div class="task-actions">'
+        + (t.Status !== 'in_progress' ? '<button class="ta-btn ta-blue" onclick="updateTask(\'' + t.ID + '\',\'in_progress\')">▶ Start</button>' : '')
+        + '<button class="ta-btn ta-green" onclick="updateTask(\'' + t.ID + '\',\'done\')">✓ Mark Done</button>'
+        + '</div>' : '')
+      // Note input
+      + (t.Status !== 'done' ? '<div class="note-row" id="nr-' + t.ID + '">'
+        + '<input class="note-input" type="text" id="ni-' + t.ID + '" placeholder="Add a note…" onkeydown="if(event.key===\'Enter\')addNote(\'' + t.ID + '\')" />'
+        + '<button class="note-send" onclick="addNote(\'' + t.ID + '\')">Send</button>'
+        + '</div>' : '')
+      + '</div>';
+  }).join('');
+}
+
+// ── ACTIONS ───────────────────────────────────────────────────────
+async function updateTask(id, status) {
+  const res = await fetch(GAS_URL, {
+    method:'POST', redirect:'follow', headers:{'Content-Type':'text/plain'},
+    body: JSON.stringify({ action:'staff_task_update', phone:staffPhone, token:staffToken, taskId:id, status }),
+  });
+  const data = JSON.parse(await res.text());
+  if (data.ok) {
+    // Optimistic UI
+    const card = document.getElementById('tc-' + id);
+    if (card) {
+      const badge = card.querySelector('.status-badge');
+      if (badge) { badge.className='status-badge s-'+status; badge.textContent = {open:'Open',in_progress:'In Progress',done:'Done ✓'}[status]||status; }
+      if (status === 'done') {
+        const actions = card.querySelector('.task-actions');
+        const noteRow = document.getElementById('nr-' + id);
+        if (actions) actions.remove();
+        if (noteRow) noteRow.remove();
+      }
+    }
+    showMsg('Updated ✓');
+    setTimeout(() => loadTasks(currentFilter), 800);
+  } else { showMsg('Error: ' + (data.error||'Failed'), true); }
+}
+
+async function addNote(id) {
+  const inp = document.getElementById('ni-' + id);
+  const note = inp ? inp.value.trim() : '';
+  if (!note) return;
+  const res = await fetch(GAS_URL, {
+    method:'POST', redirect:'follow', headers:{'Content-Type':'text/plain'},
+    body: JSON.stringify({ action:'staff_task_update', phone:staffPhone, token:staffToken, taskId:id, note }),
+  });
+  const data = JSON.parse(await res.text());
+  if (data.ok) { if (inp) inp.value=''; showMsg('Note saved ✓'); setTimeout(()=>loadTasks(currentFilter),800); }
+  else showMsg('Error saving note', true);
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtD(s) { try { return new Date(s+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short'}); } catch(e){ return s; } }
+
+let _msgTimer;
+function showMsg(text, isErr) {
+  clearTimeout(_msgTimer);
+  let toast = document.getElementById('staff-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'staff-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);'
+      + 'padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;'
+      + 'z-index:9999;transition:opacity .3s;font-family:Outfit,sans-serif;';
+    document.body.appendChild(toast);
+  }
+  toast.style.background  = isErr ? 'var(--red)'   : 'var(--ink)';
+  toast.style.color       = '#fff';
+  toast.textContent       = text;
+  toast.style.opacity     = '1';
+  _msgTimer = setTimeout(() => { toast.style.opacity='0'; }, 2500);
+}
+</script>
+</body>
+</html>

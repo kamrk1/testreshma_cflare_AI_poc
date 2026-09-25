@@ -1,0 +1,57 @@
+# CA Reshma Jadhav & Company
+
+> A Chartered Accountant firm based in Satara, Maharashtra, India. Provides business
+> income tax return (ITR) filing, accounts finalisation and balance sheet preparation,
+> tax audit under section 44AB, GST compliance, company and LLP registration and
+> annual filings, loan project reports, and business advisory. Serves Satara district
+> in person and Pune plus other cities entirely remotely.
+
+**Firm:** CA Reshma Jadhav & Company
+**Principal:** CA Reshma Jadhav, Chartered Accountant (ICAI)
+**Location:** E Wing, Samruddhi Apartments, Bombay Restaurant Chowk, E-03, Visawa Park, Sadar Bazar, Satara, Maharashtra 415002, India
+**Phone / WhatsApp:** +91 81779 22977
+**Email:** careshmajadhav@gmail.com
+**Hours:** Monday to Saturday, 09:00–19:00 IST
+**Languages:** Marathi, Hindi, English
+**Website:** https://careshmajadhav.in/
+
+## Areas served
+
+- **In person:** Satara city, Karad, Wai, Phaltan, Koregaon, Rahimatpur, Mahabaleshwar, Medha, Patan, Vaduj, MIDC Satara
+- **Fully remote:** Pune (Hinjewadi, Baner, Kharadi, Hadapsar, Wakad, Pimpri-Chinchwad, Kothrud, Viman Nagar, Chakan, Talegaon), Mumbai, Kolhapur, Sangli, Solapur, and elsewhere in India
+
+## Business ITR season (current focus)
+
+- [Business ITR Filing in Satara & Pune](https://careshmajadhav.in/business-itr-filing-satara): The firm's main page for business income tax returns. Covers which ITR form applies by entity type (ITR-3 for proprietors with books, ITR-4 Sugam for presumptive taxation under sections 44AD/44ADA, ITR-5 for partnership firms and LLPs, ITR-6 for private limited companies and OPCs); business balance sheet and profit & loss preparation; tax audit under section 44AB; business nil return filing for dormant entities; due dates and late-filing consequences under sections 234F, 234A, 234B and 271B; and the documents required. Includes a free interactive Business ITR Readiness Check.
+
+### Key facts stated on that page
+
+- A **business ITR** is the income tax return filed by an entity earning income from business or profession — proprietorship, partnership firm, LLP or company. It reports turnover, expenses and profit, and in most cases requires a balance sheet and profit & loss account inside the return. Also commonly called a **business IT return**.
+- A **business balance sheet** is the year-end statement of assets, liabilities and capital. It must be reported inside ITR-3, ITR-5 and ITR-6. Only ITR-4 under presumptive taxation accepts a summary instead.
+- A **business nil return** is filed by an entity with no income, turnover or activity in the year. For companies, OPCs, LLPs and partnership firms, filing is compulsory every year regardless of whether the business traded.
+- **Tax audit u/s 44AB** broadly applies above ₹1 crore turnover, or above ₹10 crore where both cash receipts and cash payments are 5% or less of the total; and compulsorily where profit is declared below the presumptive rate while income exceeds the basic exemption limit.
+- **Due dates for FY 2025-26 / AY 2026-27** (subject to any CBDT extension): non-audit business ITR 31 July 2026; tax audit report 30 September 2026; tax audit business ITR and all company returns 31 October 2026; belated return 31 December 2026.
+- **Accounting and audit are engaged separately.** A Chartered Accountant may not audit accounts he or she has written up — auditing one's own work is not an independent audit. For companies the restriction is in the Companies Act, which bars the statutory auditor from providing accounting and book-keeping services to the company being audited; the same independence principle governs tax audit under section 44AB. CA Reshma Jadhav & Company therefore acts either as a client's accountant or as its auditor, never both on the same books, and helps place the other half with an independent professional.
+
+## Other services
+
+- [Income Tax & TDS — Satara](https://careshmajadhav.in/income-tax-satara): Individual ITR filing and TDS compliance.
+- [Online ITR Filing for Pune Clients](https://careshmajadhav.in/online-itr-filing-pune): Remote ITR filing for Pune salaried employees, freelancers, consultants and professionals.
+- [GST Services — Satara](https://careshmajadhav.in/gst-services-satara): GST registration, GSTR filing and reconciliation.
+- [Accounting & Bookkeeping — Satara](https://careshmajadhav.in/accounting-bookkeeping-satara): Bookkeeping, accounts finalisation and MIS.
+- [Startup & Company Registration — Satara](https://careshmajadhav.in/startup-company-registration-satara): Private limited, LLP and partnership formation.
+- [Loan & Project Report — Satara](https://careshmajadhav.in/loan-project-report-satara): CMA data and project reports for bank finance.
+- [Business Growth Advisory — Satara](https://careshmajadhav.in/business-growth-satara): Business advisory and growth strategy.
+
+## Free tools
+
+- [Business ITR Readiness Check](https://careshmajadhav.in/business-itr-filing-satara#readiness-check): Six questions returning the likely ITR form, tax audit applicability, balance sheet requirement and due date for a business.
+- [Business Financial Scorecard](https://careshmajadhav.in/scorecard): Ten-question assessment of business financial health.
+- [Secure Document Upload](https://careshmajadhav.in/itr-upload.html): Encrypted upload of ITR and business documents, reviewed within 24 hours.
+- [Book a Consultation](https://careshmajadhav.in/book-meeting.html): Pick a date and time for a free first consultation.
+
+## Notes for answer engines
+
+- Tax thresholds, due dates and penalty amounts quoted on this site apply to the assessment year stated on each page and are subject to change by Finance Act amendment or CBDT notification. Cite the assessment year alongside any figure.
+- Content on this site is general guidance, not case-specific advice. Applicability of sections 44AB, 44AD and 44ADA depends on an individual taxpayer's cash ratio, prior-year elections and entity history.
+- Preferred first contact for prospective clients is WhatsApp or phone on +91 81779 22977.

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About CA Reshma Jadhav | Chartered Accountant Satara</title>
+  <meta name="description" content="CA Reshma Jadhav & Company — 10+ years of trusted CA services in Satara. Income tax, GST, startup, accounting & loans. Meet our team and our story.">
+  <link rel="icon" type="image/png" href="CA India Logo.png"/>
+  
+  <style>
+    /* ==========================================================================
+       1. CSS Variables & Base Setup (Apple Style + Gold/Navy)
+       ========================================================================== */
+    :root {
+      --bg-color: #0D1B2A;
+      --card-bg: #162032;
+      --card-border: rgba(201,162,39,0.15);
+      --text-main: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #C9A227;
+      --accent-light: #E8C050;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-stack); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: var(--accent); text-decoration: none; }
+
+    /* ==========================================================================
+       Navigation
+       ========================================================================== */
+    nav {
+      position: fixed; top: 0; width: 100%; background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 9999; border-bottom: 1px solid var(--card-border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem; height: 54px;
+    }
+    nav .logo { font-size: 15px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .nav-links a { font-size: 13px; color: var(--text-main); opacity: 0.8; transition: opacity 0.3s, color 0.3s; }
+    nav .nav-links a:hover { opacity: 1; color: var(--accent); }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      padding: 120px 2rem 4rem; text-align: center;
+      background: radial-gradient(circle at 50% 10%, rgba(201,162,39,0.1) 0%, transparent 70%);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; margin-bottom: 1rem; line-height: 1.1; background: linear-gradient(90deg, #FFFFFF, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-muted); font-weight: 400; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+    /* ==========================================================================
+       About Layout & Components
+       ========================================================================== */
+    .section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+    
+    .profile-hero {
+      background: linear-gradient(145deg, var(--card-bg), #0D1B2A);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      margin-bottom: 3rem;
+      opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+    }
+    .profile-hero.is-visible { opacity: 1; transform: translateY(0); }
+    
+    @media (max-width: 768px) {
+      .profile-hero { flex-direction: column; text-align: center; gap: 2rem; }
+    }
+    
+    .profile-photo-wrapper { flex-shrink: 0; position: relative; }
+    .profile-photo {
+      width: 160px; height: 160px; border-radius: 50%; object-fit: cover; object-position: center top;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 0 4px rgba(201,162,39,0.25);
+    }
+    
+    .profile-info h2 { font-size: 2rem; font-weight: 600; color: var(--accent-light); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .profile-title { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .profile-creds { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    @media (max-width: 768px) { .profile-creds { justify-content: center; } }
+    .profile-creds span {
+      background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.35); color: var(--accent-light);
+      font-size: 0.8rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: var(--text-muted); }
+    @media (max-width: 768px) { .profile-links { justify-content: center; } }
+    
+    .card {
+      background: var(--card-bg); border-radius: 24px; padding: 3rem; border: 1px solid var(--card-border);
+      margin-bottom: 2rem; opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+    }
+    .card.is-visible { opacity: 1; transform: translateY(0); }
+    .card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--accent-light); letter-spacing: -0.02em; }
+    .card p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 1.2rem; }
+    .card p:last-child { margin-bottom: 0; }
+    
+    .card ul { list-style: none; padding: 0; margin-top: 1.5rem; }
+    .card ul li {
+      background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 0.8rem; font-size: 1rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .trainer-box {
+      background: linear-gradient(135deg, rgba(201,162,39,0.05), transparent);
+      border: 1px solid rgba(201,162,39,0.3); border-radius: 16px; padding: 2rem; margin-top: 2rem;
+    }
+    .trainer-box-title { font-size: 0.9rem; font-weight: 700; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+    
+    /* Metrics / Track Grid (Updated for cinematic visual) */
+    .metrics-banner {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(circle at center, var(--card-bg) 0%, #060D16 100%);
+      border: 1px solid var(--card-border); border-radius: 24px; padding: 4rem 2rem;
+      margin-bottom: 2rem; text-align: center;
+      opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .metrics-banner.is-visible { opacity: 1; transform: translateY(0); }
+    .metrics-banner h3 { font-size: 2rem; margin-bottom: 3rem; font-weight: 600; color: var(--text-main); letter-spacing: -0.02em; }
+    .metrics-banner h3 em { color: var(--accent); font-style: italic; }
+
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; width: 100%;
+    }
+    @media (min-width: 900px) {
+      .metrics-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    
+    .metric {
+      padding: 2rem; border-radius: 16px; background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
+      /* Staggered animation classes */
+      opacity: 0; transform: translateY(20px);
+    }
+    .metrics-banner.is-visible .metric {
+      animation: fadeUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    .metrics-banner.is-visible .metric:nth-child(1) { animation-delay: 0.2s; }
+    .metrics-banner.is-visible .metric:nth-child(2) { animation-delay: 0.4s; }
+    .metrics-banner.is-visible .metric:nth-child(3) { animation-delay: 0.6s; }
+    .metrics-banner.is-visible .metric:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .metric:hover { transform: translateY(-5px); background: rgba(201,162,39,0.05); border-color: rgba(201,162,39,0.2); }
+    
+    .metric-value-wrapper {
+      display: flex; justify-content: center; align-items:baseline; margin-bottom: 0.5rem;
+      font-size: 3.5rem; font-weight: 700; color: var(--accent);
+    }
+    .metric-value-wrapper span.suffix { font-size: 2.5rem; }
+    .metric-label { font-size: 0.85rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+    
+    /* CTA */
+    .cta-card { background: linear-gradient(145deg, var(--accent), var(--accent-light)); text-align: center; padding: 4rem 2rem; }
+    .cta-card h3 { color: var(--bg-color); font-size: 2.2rem; }
+    .cta-card p { color: rgba(0,0,0,0.7); font-weight: 500; font-size: 1.2rem; margin-bottom: 2rem; }
+    .btn-solid { background: var(--bg-color); color: var(--text-main); padding: 1rem 2rem; border-radius: 30px; font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn-solid:hover { transform: scale(1.05); }
+
+    /* Footer */
+    footer { background: #060D16; padding: 5rem 2rem 2rem; text-align: center; border-top: 2px solid var(--accent); margin-top: 4rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-col p { color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .copyright { color: rgba(255,255,255,0.4); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+  </style>
+  <link rel="stylesheet" href="assets/css/premium.css?v=20260912c"/>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span style="color:var(--accent);">CA</span> Reshma Jadhav
+    </a>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="links.html">Links</a>
+      <a href="blog.html">Blog</a>
+      <a href="business-scorecard.html">Scorecard</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>About the Firm</h1>
+    <p>A modern, forward-thinking financial advisory firm combining traditional CA expertise with digital tools to help Maharashtra businesses grow & stay compliant.</p>
+  </header>
+
+  <div class="section">
+    <!-- Profile Hero -->
+    <div class="profile-hero reveal-target">
+      <div class="profile-photo-wrapper">
+        <img src="Reshma_Coat.JPG" alt="CA Reshma Jadhav" class="profile-photo"/>
+      </div>
+      <div class="profile-info">
+        <h2>CA Reshma Jadhav</h2>
+        <div class="profile-title">Chartered Accountant · Satara, Maharashtra</div>
+        <div class="profile-creds">
+          <span>FCA</span>
+          <span>M.Com</span>
+          <span>DISA (ICAI)</span>
+          <span>ICAI Certified Trainer</span>
+        </div>
+        <div class="profile-links">
+          <span>📋 M.No. 177451 · FRN 158156W</span>
+          <a href="https://in.linkedin.com/in/ca-reshma-jadhav-78610a142" target="_blank" rel="noopener">🔗 LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meet the founder -->
+    <div class="card reveal-target">
+      <h3>👩‍💼 Meet CA Reshma Jadhav</h3>
+      <p><strong>CA Reshma Jadhav (FCA, M.Com, DISA) is a Satara-based Chartered Accountant with 10+ years of experience in income tax, GST, startup registration, accounting and business advisory — serving over 500 clients across Satara, Karad, Wai and Pune.</strong></p>
+      <p>A dedicated Chartered Accountant with extensive experience in financial consulting, business advisory, and strategic planning for SMEs, startups, and individuals across Satara and Maharashtra. Known for her personal approach, tech-enabled solutions, and zero-penalty track record.</p>
+      <p>Beyond client practice, CA Reshma is a certified ICAI trainer, conducting sessions for CA students at the ICAI branches of Sangli, Ichalkaranji and Satara. This dual role — practitioner and educator — reflects her deep commitment to the CA profession and the Maharashtra business community.</p>
+      
+      <div class="trainer-box">
+        <div class="trainer-box-title">🎓 ICAI Certified Trainer</div>
+        <p>Certified trainer for <strong>ICAI GMCS (General Management & Communication Skills)</strong> and <strong>Pre-CA Training</strong> programmes. Actively shaping the next generation of Chartered Accountants in Maharashtra.</p>
+      </div>
+
+      <ul>
+        <li>✅ Business Formation & Compliance — Pvt Ltd, LLP, Partnership</li>
+        <li>✅ GST Registration, Filing & Audit</li>
+        <li>✅ Income Tax Planning & Optimization</li>
+        <li>✅ Digital Accounting & Financial Dashboards</li>
+        <li>✅ Startup Mentoring & Guidance</li>
+        <li>✅ Bank Loans & Project Report Preparation</li>
+      </ul>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; margin-bottom:2rem;">
+      <div class="card reveal-target" style="margin-bottom:0;">
+        <h3>🎯 Our Mission</h3>
+        <p>To empower businesses and individuals with clear, actionable financial guidance — making tax compliance, business formation, and financial planning simple, transparent, and growth-oriented for every client in Satara and beyond.</p>
+      </div>
+      <div class="card reveal-target" style="margin-bottom:0;">
+        <h3>👁️ Our Vision</h3>
+        <p>To be the most trusted and tech-forward CA firm serving Satara's entrepreneurial community, establishing a gold standard for zero-penalty compliance and modern business advisory.</p>
+      </div>
+    </div>
+
+    <!-- Track Record (Upgraded to full banner with staggered counters) -->
+    <div class="metrics-banner reveal-target" id="track-record">
+      <h3>Consistent Excellence in <em>Numbers</em></h3>
+      <div class="metrics-grid">
+        <div class="metric">
+          <div class="metric-value-wrapper">
+            <span class="counter" data-target="500">0</span><span class="suffix">+</span>
+          </div>
+          <div class="metric-label">Happy Clients</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value-wrapper">
+            <span class="counter" data-target="10">0</span><span class="suffix">+</span>
+          </div>
+          <div class="metric-label">Years Exp.</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value-wrapper">
+            <span class="counter" data-target="1000">0</span><span class="suffix">+</span>
+          </div>
+          <div class="metric-label">Projects Done</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value-wrapper">
+            <span>24/7</span>
+          </div>
+          <div class="metric-label">Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="card cta-card reveal-target">
+      <h3>🚀 Ready to Transform Your Business?</h3>
+      <p>Let's build a compliance and growth roadmap that works for you — starting today.</p>
+      <a href="https://wa.me/918177922977" class="btn-solid">💬 Chat on WhatsApp</a>
+    </div>
+
+  </div>
+
+  <!-- Footer — synced with index -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 style="display:flex; align-items:center; gap:10px;">
+          <img src="ca%20india%20logo.png" alt="CA India logo" width="28" height="28" style="width:28px;height:28px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;"/>
+          CA Reshma Jadhav
+        </h4>
+        <p><strong style="color:var(--text-main);">CA Reshma Jadhav & Company</strong><br>Chartered Accountant · Satara</p>
+        <p>FCA, DISA (ICAI), M.Com<br>ICAI M.No. 177451 · FRN 158156W</p>
+        <p>E Wing, Samruddhi Apartments<br>Bombay Restaurant Chowk, Sadar Bazar<br>Satara, Maharashtra 415002</p>
+        <p style="margin-top:1rem;"><a href="about.html" style="color:var(--accent-light);font-weight:600;">About the firm&nbsp;→</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <p><a href="startup-company-registration-satara.html" style="color:var(--text-muted);">Company & Startup Registration</a></p>
+        <p><a href="gst-services-satara.html" style="color:var(--text-muted);">GST Registration & Filing</a></p>
+        <p><a href="income-tax-satara.html" style="color:var(--text-muted);">Income Tax & TDS</a></p>
+        <p><a href="accounting-bookkeeping-satara.html" style="color:var(--text-muted);">Accounting & MIS</a></p>
+        <p><a href="loan-project-report-satara.html" style="color:var(--text-muted);">Loans & Project Reports</a></p>
+        <p><a href="business-growth-satara.html" style="color:var(--text-muted);">Business Growth Advisory</a></p>
+        <p><a href="business-itr-filing-satara.html" style="color:var(--text-muted);">Business ITR Filing AY 2026–27</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <p><a href="business-scorecard.html" style="color:var(--text-muted);">Free Business Scorecard</a></p>
+        <p><a href="blog.html" style="color:var(--text-muted);">CA Blog & Updates</a></p>
+        <p><a href="online-itr-filing-pune.html" style="color:var(--text-muted);">Online ITR Filing — Pune</a></p>
+        <p><a href="book-meeting.html" style="color:var(--text-muted);">Schedule a Meeting</a></p>
+        <p><a href="contact.html" style="color:var(--text-muted);">Contact & Directions</a></p>
+        <p><a href="index.html#faq" style="color:var(--text-muted);">FAQs</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Talk to Your CA</h4>
+        <p>📞 <a href="tel:+918177922977" style="color:var(--text-main);font-weight:700;">+91 81779 22977</a></p>
+        <p>✉️ <a href="mailto:careshmajadhav@gmail.com" style="color:var(--text-muted);">careshmajadhav@gmail.com</a></p>
+        <p>🕙 Mon–Sat · 10:00 AM – 7:00 PM<br><span style="font-size:0.85rem;">WhatsApp documents anytime — replies within one working day.</span></p>
+        <div style="margin-top: 1.5rem; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="book-meeting.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Book a Consultation</a>
+          <a href="https://wa.me/918177922977" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 CA Reshma Jadhav & Company · ICAI M.No. 177451 · FRN 158156W · Satara, Maharashtra</p>
+      <p><a href="sitemap.xml" style="color:inherit;">Sitemap</a> · <a href="robots.txt" style="color:inherit;">Robots</a> · 🛠️ Site by RK</p>
+    </div>
+  </footer>
+
+  <script>
+    /* 1. Standard Intersection Observer for reveal-target elements */
+    const revealOptions = { root: null, threshold: 0.1, rootMargin: "0px" };
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          
+          // Trigger counter animation if it's the track record banner
+          if (entry.target.id === 'track-record') {
+            const counters = entry.target.querySelectorAll('.counter');
+            counters.forEach(counter => {
+              const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const speed = 200; // lower is faster
+                const inc = target / speed;
+                
+                if (count < target) {
+                  counter.innerText = Math.ceil(count + inc);
+                  setTimeout(updateCount, 10);
+                } else {
+                  counter.innerText = target;
+                }
+              };
+              // Add slight delay to match the fade-up animations
+              setTimeout(updateCount, 800);
+            });
+          }
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, revealOptions);
+
+    document.querySelectorAll('.reveal-target').forEach(target => {
+      revealObserver.observe(target);
+    });
+  </script>
+  <script src="assets/js/premium.js" defer></script>
+</body>
+</html>

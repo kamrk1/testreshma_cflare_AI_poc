@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Free Business Financial Health Score | CA Reshma Jadhav, Satara</title>
+  <meta name="description" content="Take the FREE Business Financial Readiness Assessment by CA Reshma Jadhav. Get your personalised score, financial health level, and expert recommendations in 3 minutes.">
+  <link rel="icon" type="image/png" href="CA India Logo.png"/>
+  
+  <style>
+    :root {
+      --bg-color: #0D1B2A;
+      --card-bg: #162032;
+      --card-border: rgba(201,162,39,0.15);
+      --text-main: #FFFFFF;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #C9A227;
+      --accent-light: #E8C050;
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-stack); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: var(--accent); text-decoration: none; }
+    nav {
+      position: fixed; top: 0; width: 100%; background: rgba(13, 27, 42, 0.8);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 9999; border-bottom: 1px solid var(--card-border);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem; height: 54px;
+    }
+    nav .logo { font-size: 15px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+    nav .nav-links { display: flex; gap: 2rem; }
+    nav .nav-links a { font-size: 13px; color: var(--text-main); opacity: 0.8; transition: opacity 0.3s, color 0.3s; }
+    nav .nav-links a:hover { opacity: 1; color: var(--accent); }
+    @media (max-width: 768px) { nav .nav-links { display: none; } }
+    
+    .hero {
+      padding: 120px 2rem 4rem; text-align: center;
+      background: radial-gradient(circle at 50% 10%, rgba(201,162,39,0.1) 0%, transparent 70%);
+    }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; letter-spacing: -0.04em; margin-bottom: 1rem; line-height: 1.1; background: linear-gradient(90deg, #FFFFFF, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-muted); font-weight: 400; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+    
+    .section { padding: 2rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+    .card {
+      background: var(--card-bg); border-radius: 24px; padding: 2.5rem; border: 1px solid var(--card-border);
+      margin-bottom: 2rem; opacity: 0; transform: translateY(40px); transition: all 0.8s ease;
+    }
+    .card.is-visible { opacity: 1; transform: translateY(0); }
+    .card h2, .card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--accent-light); letter-spacing: -0.02em; }
+    .card p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 1.2rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul { list-style: none; padding: 0; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+    .card ul li {
+      background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 0.8rem; font-size: 1rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 10px;
+    }
+    
+    .btn-solid { background: var(--bg-color); color: var(--text-main); padding: 1rem 2rem; border-radius: 30px; border: 1px solid var(--accent); font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; justify-content:center; gap: 8px; transition: transform 0.2s, background 0.2s; text-decoration:none; margin-top: 10px; margin-right: 10px;}
+    .btn-solid:hover { transform: scale(1.05); background: var(--accent); color: var(--bg-color); }
+    
+    .related-grid, .cta-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .related-card, .cta-box { background: rgba(255,255,255,0.02); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem; text-align: center; color: var(--text-main); transition: transform 0.2s; display: block; }
+    .related-card:hover, .cta-box:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .related-top img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem; }
+    
+    footer { background: #060D16; padding: 5rem 2rem 2rem; text-align: center; border-top: 2px solid var(--accent); margin-top: 4rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: left; margin-bottom: 4rem; }
+    .footer-col h4 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-col p { color: var(--text-muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .copyright { color: rgba(255,255,255,0.4); font-size: 0.85rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto; }
+  </style>
+  <link rel="stylesheet" href="assets/css/premium.css?v=20260912c"/>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo" aria-label="CA Reshma Jadhav & Company — Home">
+      <img src="ca%20india%20logo.png" alt="CA India logo" width="32" height="32" style="width:32px;height:32px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0;"/>
+      <span><span style="color:var(--accent);">CA</span> Reshma Jadhav</span>
+    </a>
+        <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="links.html">Links</a>
+      <a href="blog.html">Blog</a>
+      <a href="business-scorecard.html">Scorecard</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="section">
+
+<!-- HERO -->
+<div class="tool-hero">
+  <div class="hero-dots"></div>
+  <div class="tool-hero-inner">
+    <div class="hero-badge">📊 Free Assessment · Takes 3 Minutes</div>
+    <h1>How <em>Financially Healthy</em><br>Is Your Business?</h1>
+    <p class="tool-hero-sub">Answer 10 quick questions. Get your personalised Business Financial Health Score with expert CA recommendations — instantly, for free.</p>
+    <div class="tool-stats">
+      <div class="tool-stat"><div class="tool-stat-num">10</div><div class="tool-stat-label">Questions</div></div>
+      <div class="tool-stat"><div class="tool-stat-num">3 min</div><div class="tool-stat-label">To Complete</div></div>
+      <div class="tool-stat"><div class="tool-stat-num">100%</div><div class="tool-stat-label">Free</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ASSESSMENT AREA -->
+<div class="assessment-wrap" id="assessment-area">
+  
+  <!-- PROGRESS -->
+  <div class="progress-section" id="progress-section" style="margin-top:24px;">
+    <div class="progress-header">
+      <span class="progress-label">Your Progress</span>
+      <span class="progress-count" id="progress-text">Question 1 of 10</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:10%"></div></div>
+  </div>
+
+  <!-- QUESTION CARD -->
+  <div class="q-card active" id="question-card">
+    <div class="q-card-header" id="q-header">
+      <div class="q-step-badge" id="q-step-badge">Step 1 of 10</div>
+      <div class="q-number" id="q-text">Loading...</div>
+      <div class="q-hint" id="q-hint"></div>
+    </div>
+    <div class="q-body" id="q-body">
+      <!-- Dynamic content -->
+    </div>
+    <div class="q-body" style="padding-top:0;">
+      <div class="q-nav">
+        <button class="btn-back" id="btn-back" onclick="prevQuestion()" style="display:none;">← Back</button>
+        <button class="btn-next" id="btn-next" onclick="nextQuestion()">Next&nbsp;→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATING -->
+  <div class="calculating" id="calculating">
+    <div class="calc-spinner"></div>
+    <div class="calc-text">Analysing Your Business...</div>
+    <div class="calc-sub">Computing your financial health score</div>
+  </div>
+
+</div>
+
+<!-- RESULTS (hidden initially) -->
+<div class="results-wrap" id="results-wrap">
+
+  <!-- SCORE GAUGE -->
+  <div class="score-card fade-up-1">
+    <svg class="gauge-svg" width="160" height="160" viewBox="0 0 160 160">
+      <circle class="gauge-bg" cx="80" cy="80" r="64"/>
+      <circle class="gauge-fill" id="gauge-fill" cx="80" cy="80" r="64" stroke-dasharray="402.12" stroke-dashoffset="402.12" stroke="var(--gold)"/>
+    </svg>
+    <div class="gauge-center">
+      <div class="gauge-num" id="result-score">0</div>
+      <div class="gauge-denom">out of 100</div>
+    </div>
+    <div class="level-badge" id="result-level-badge">Loading...</div>
+    <p class="level-desc" id="result-level-desc">Loading...</p>
+  </div>
+
+  <!-- KEY METRICS -->
+  <div class="metrics-panel fade-up-2">
+    <div class="metrics-title">📐 Your Key Metrics</div>
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="metric-label">Profit Margin</div>
+        <div class="metric-value" id="metric-pm">—</div>
+        <div class="metric-status" id="metric-pm-status"></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Cash Conv. Cycle</div>
+        <div class="metric-value" id="metric-ccc">—</div>
+        <div class="metric-status" id="metric-ccc-status"></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Cash Reserves</div>
+        <div class="metric-value" id="metric-cr">—</div>
+        <div class="metric-status" id="metric-cr-status"></div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Compliance Score</div>
+        <div class="metric-value" id="metric-comp">—</div>
+        <div class="metric-status" id="metric-comp-status"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORE BREAKDOWN -->
+  <div class="breakdown-panel fade-up-2">
+    <div class="breakdown-title">📊 Score Breakdown</div>
+    <div id="breakdown-list"></div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div class="reco-panel fade-up-3">
+    <div class="reco-title">💡 Personalised Recommendations</div>
+    <div class="reco-list" id="reco-list"></div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-panel fade-up-4">
+    <div class="cta-inner">
+      <span class="cta-icon">🎯</span>
+      <div class="cta-title">Ready to <em>Fix the Gaps?</em></div>
+      <p class="cta-sub">CA Reshma Jadhav will review your score and create a personalised action plan for your business — in a free 30-minute call.</p>
+      <a href="enquiry.html" class="btn-cta-primary">📅 Schedule FREE 30-Min Consultation</a>
+      <a href="https://wa.me/918177922977?text=Hi%20CA%20Reshma!%20I%20just%20completed%20the%20Business%20Financial%20Health%20Assessment.%20I%27d%20like%20to%20discuss%20my%20results." target="_blank" class="btn-cta-wa">💬 WhatsApp My Results</a>
+      <p class="cta-tagline">CA Reshma Jadhav · Business Growth Strategist · Satara</p>
+    </div>
+  </div>
+
+  <button class="retake-btn" onclick="resetAssessment()">🔄 Retake Assessment</button>
+
+</div>
+
+  </div>
+
+  <!-- Footer — synced with index -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4 style="display:flex; align-items:center; gap:10px;">
+          <img src="ca%20india%20logo.png" alt="CA India logo" width="28" height="28" style="width:28px;height:28px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;"/>
+          CA Reshma Jadhav
+        </h4>
+        <p><strong style="color:var(--text-main);">CA Reshma Jadhav & Company</strong><br>Chartered Accountant · Satara</p>
+        <p>FCA, DISA (ICAI), M.Com<br>ICAI M.No. 177451 · FRN 158156W</p>
+        <p>E Wing, Samruddhi Apartments<br>Bombay Restaurant Chowk, Sadar Bazar<br>Satara, Maharashtra 415002</p>
+        <p style="margin-top:1rem;"><a href="about.html" style="color:var(--accent-light);font-weight:600;">About the firm&nbsp;→</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <p><a href="startup-company-registration-satara.html" style="color:var(--text-muted);">Company & Startup Registration</a></p>
+        <p><a href="gst-services-satara.html" style="color:var(--text-muted);">GST Registration & Filing</a></p>
+        <p><a href="income-tax-satara.html" style="color:var(--text-muted);">Income Tax & TDS</a></p>
+        <p><a href="accounting-bookkeeping-satara.html" style="color:var(--text-muted);">Accounting & MIS</a></p>
+        <p><a href="loan-project-report-satara.html" style="color:var(--text-muted);">Loans & Project Reports</a></p>
+        <p><a href="business-growth-satara.html" style="color:var(--text-muted);">Business Growth Advisory</a></p>
+        <p><a href="business-itr-filing-satara.html" style="color:var(--text-muted);">Business ITR Filing AY 2026–27</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <p><a href="business-scorecard.html" style="color:var(--text-muted);">Free Business Scorecard</a></p>
+        <p><a href="blog.html" style="color:var(--text-muted);">CA Blog & Updates</a></p>
+        <p><a href="online-itr-filing-pune.html" style="color:var(--text-muted);">Online ITR Filing — Pune</a></p>
+        <p><a href="book-meeting.html" style="color:var(--text-muted);">Schedule a Meeting</a></p>
+        <p><a href="contact.html" style="color:var(--text-muted);">Contact & Directions</a></p>
+        <p><a href="index.html#faq" style="color:var(--text-muted);">FAQs</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Talk to Your CA</h4>
+        <p>📞 <a href="tel:+918177922977" style="color:var(--text-main);font-weight:700;">+91 81779 22977</a></p>
+        <p>✉️ <a href="mailto:careshmajadhav@gmail.com" style="color:var(--text-muted);">careshmajadhav@gmail.com</a></p>
+        <p>🕙 Mon–Sat · 10:00 AM – 7:00 PM<br><span style="font-size:0.85rem;">WhatsApp documents anytime — replies within one working day.</span></p>
+        <div style="margin-top: 1.5rem; display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="book-meeting.html" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">Book a Consultation</a>
+          <a href="https://wa.me/918177922977" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.8rem 1.5rem; font-size: 0.85rem;">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2026 CA Reshma Jadhav & Company · ICAI M.No. 177451 · FRN 158156W · Satara, Maharashtra</p>
+      <p><a href="sitemap.xml" style="color:inherit;">Sitemap</a> · <a href="robots.txt" style="color:inherit;">Robots</a> · 🛠️ Site by RK</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealOptions = { root: null, threshold: 0.1, rootMargin: "0px" };
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, revealOptions);
+    document.querySelectorAll('.reveal-target').forEach(target => {
+      revealObserver.observe(target);
+    });
+  </script>
+  <script>
+  /* Business Financial Health Assessment — 10-question engine + scoring. */
+  const questions = [
+    { id: 'revenue', text: 'What is your current monthly revenue?',
+      hint: 'Enter the total amount you receive from customers each month',
+      type: 'number', prefix: '₹', suffix: '/ month', placeholder: 'e.g. 250000', min: 0 },
+    { id: 'expenses', text: 'What are your monthly operating expenses?',
+      hint: 'Include salaries, rent, raw materials, utilities — all costs to run the business',
+      type: 'number', prefix: '₹', suffix: '/ month', placeholder: 'e.g. 175000', min: 0 },
+    { id: 'collection_days', text: 'How many days do customers take to pay you on average?',
+      hint: 'Think about your typical invoices — how long before the money hits your account?',
+      type: 'number', prefix: '', suffix: 'days', placeholder: 'e.g. 30', min: 0, max: 365 },
+    { id: 'payment_days', text: 'How many days do you take to pay your suppliers?',
+      hint: 'Longer supplier payment terms are generally better for your cash flow',
+      type: 'number', prefix: '', suffix: 'days', placeholder: 'e.g. 15', min: 0, max: 365 },
+    { id: 'cash_reserves', text: 'Do you have emergency cash reserves set aside?',
+      hint: 'Cash reserves protect your business from unexpected shocks and slow months',
+      type: 'options', options: [
+        { value: 'No', label: 'No cash reserves', icon: '🚨' },
+        { value: '1-3 months', label: '1–3 months of expenses', icon: '🌱' },
+        { value: '3-6 months', label: '3–6 months of expenses', icon: '🌳' },
+        { value: '6+ months', label: '6+ months of expenses', icon: '🏦' } ] },
+    { id: 'profit_tracking', text: 'Do you track profit margins by product or service?',
+      hint: 'Knowing which offerings are most profitable helps you grow smarter',
+      type: 'options', options: [
+        { value: 'Never', label: "Never — I don't track this", icon: '❓' },
+        { value: 'Sometimes', label: 'Sometimes — informally', icon: '📝' },
+        { value: 'Always', label: 'Always — formally tracked', icon: '✅' } ] },
+    { id: 'compliance', text: 'Are your GST / TDS filings always submitted on time?',
+      hint: 'Late filings attract penalties and interest — and affect your credit profile',
+      type: 'options', options: [
+        { value: 'No', label: 'No — often delayed or missed', icon: '🚨' },
+        { value: 'Mostly', label: 'Mostly — occasional delays', icon: '⏳' },
+        { value: 'Always', label: 'Always — never a deadline missed', icon: '✅' } ] },
+    { id: 'planning', text: 'Do you have a formal business plan with financial projections?',
+      hint: 'A plan with projections helps you spot cash crunches before they happen',
+      type: 'options', options: [
+        { value: 'No', label: 'No formal plan', icon: '❓' },
+        { value: 'Basic', label: 'Basic — rough idea in my head', icon: '💡' },
+        { value: 'Detailed', label: 'Detailed — written with numbers', icon: '📊' } ] },
+    { id: 'knowledge', text: 'Can you calculate your business break-even point?',
+      hint: 'Break-even = fixed costs ÷ (selling price − variable cost per unit)',
+      type: 'options', options: [
+        { value: 'No', label: 'No — not sure what this is', icon: '❓' },
+        { value: 'Roughly', label: 'Roughly — I have an idea', icon: '💭' },
+        { value: 'Exactly', label: 'Exactly — I know my numbers', icon: '🎯' } ] },
+    { id: 'review_habits', text: 'How often do you review your business financials?',
+      hint: 'Regular financial review is the single biggest predictor of business health',
+      type: 'options', options: [
+        { value: 'Never', label: 'Never or rarely', icon: '📉' },
+        { value: 'Quarterly', label: 'Every quarter', icon: '📅' },
+        { value: 'Monthly', label: 'Every month — without fail', icon: '✅' } ] }
+  ];
+
+  let currentStep = 0;
+  const answers = {};
+
+  function renderQuestion(step, direction) {
+    direction = direction || 1;
+    const q = questions[step];
+    const card = document.getElementById('question-card');
+    if (!q || !card) return;
+    card.classList.remove('active');
+    card.style.opacity = '0';
+    card.style.transform = direction > 0 ? 'translateX(-30px)' : 'translateX(30px)';
+    setTimeout(() => {
+      document.getElementById('q-step-badge').textContent = 'Step ' + (step + 1) + ' of 10';
+      document.getElementById('q-text').textContent = q.text;
+      document.getElementById('q-hint').textContent = q.hint;
+      const body = document.getElementById('q-body');
+      if (q.type === 'number') {
+        body.innerHTML =
+          '<div class="input-wrap">' +
+          '<span class="input-prefix">' + q.prefix + '</span>' +
+          '<input type="number" id="input-' + q.id + '" placeholder="' + q.placeholder + '" min="' + (q.min || 0) + '"' +
+          (q.max ? ' max="' + q.max + '"' : '') + ' value="' + (answers[q.id] || '') + '"' +
+          ' oninput="onNumberInput(\'' + q.id + '\')" onkeydown="if(event.key===\'Enter\')nextQuestion()">' +
+          '<span class="input-suffix">' + q.suffix + '</span></div>' +
+          '<div class="error-msg" id="error-' + q.id + '">Please enter a valid number to continue.</div>';
+        setTimeout(() => { const i = document.getElementById('input-' + q.id); if (i) i.focus(); }, 100);
+      } else {
+        const sel = answers[q.id] || '';
+        body.innerHTML = '<div class="options-grid">' + q.options.map(opt =>
+          '<button class="opt-btn' + (sel === opt.value ? ' selected' : '') + '" onclick="selectOption(\'' + q.id + '\',\'' + opt.value + '\',this)">' +
+          '<span class="opt-icon">' + opt.icon + '</span>' +
+          '<span class="opt-label">' + opt.label + '</span>' +
+          '<span class="opt-check">✓</span></button>').join('') + '</div>';
+      }
+      document.getElementById('btn-back').style.display = step > 0 ? 'block' : 'none';
+      const btnNext = document.getElementById('btn-next');
+      const isLast = step === questions.length - 1;
+      btnNext.textContent = isLast ? '🎯 Get My Score' : 'Next →';
+      btnNext.style.background = isLast ? '#16A34A' : '#C9A227';
+      btnNext.style.color = isLast ? '#FFFFFF' : '#0D1B2A';
+      document.getElementById('progress-text').textContent = 'Question ' + (step + 1) + ' of 10';
+      document.getElementById('progress-fill').style.width = (((step + 1) / 10) * 100) + '%';
+      card.style.transform = direction > 0 ? 'translateX(30px)' : 'translateX(-30px)';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        card.style.transition = 'opacity .4s ease, transform .4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateX(0)';
+      }));
+    }, 200);
+  }
+
+  function onNumberInput(id) {
+    const el = document.getElementById('input-' + id);
+    answers[id] = el ? el.value : '';
+    const err = document.getElementById('error-' + id);
+    if (err) err.classList.remove('show');
+    if (el) el.classList.remove('error');
+  }
+
+  function selectOption(id, value, btn) {
+    answers[id] = value;
+    document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+    if (btn) btn.classList.add('selected');
+  }
+
+  function nextQuestion() {
+    const q = questions[currentStep];
+    if (!q) return;
+    if (q.type === 'number') {
+      const val = answers[q.id];
+      if (val === undefined || val === '' || isNaN(Number(val)) || Number(val) < 0 ||
+          (q.max !== undefined && Number(val) > q.max)) {
+        const err = document.getElementById('error-' + q.id);
+        if (err) err.classList.add('show');
+        const inp = document.getElementById('input-' + q.id);
+        if (inp) inp.classList.add('error');
+        return;
+      }
+    } else if (!answers[q.id]) {
+      const card = document.getElementById('question-card');
+      card.style.transform = 'translateX(-8px)';
+      setTimeout(() => { card.style.transform = 'translateX(8px)'; }, 80);
+      setTimeout(() => { card.style.transform = 'translateX(0)'; }, 160);
+      return;
+    }
+    if (currentStep < questions.length - 1) {
+      currentStep++;
+      renderQuestion(currentStep, 1);
+    } else {
+      calculateResults();
+    }
+  }
+
+  function prevQuestion() {
+    if (currentStep > 0) { currentStep--; renderQuestion(currentStep, -1); }
+  }
+
+  function calculateResults() {
+    document.getElementById('question-card').style.display = 'none';
+    document.getElementById('progress-section').style.display = 'none';
+    document.getElementById('calculating').classList.add('show');
+    setTimeout(() => showResults(computeScores()), 2200);
+  }
+
+  function computeScores() {
+    const rev = parseFloat(answers.revenue) || 0;
+    const exp = parseFloat(answers.expenses) || 0;
+    const colDays = parseFloat(answers.collection_days) || 0;
+    const payDays = parseFloat(answers.payment_days) || 0;
+    const profitMargin = rev > 0 ? ((rev - exp) / rev) * 100 : 0;
+    let pmScore = 0;
+    if (profitMargin >= 30) pmScore = 20;
+    else if (profitMargin >= 20) pmScore = 16;
+    else if (profitMargin >= 10) pmScore = 12;
+    else if (profitMargin >= 5) pmScore = 7;
+    else if (profitMargin >= 0) pmScore = 3;
+    const ccc = colDays - payDays;
+    let cccScore = 0;
+    if (ccc <= 0) cccScore = 15;
+    else if (ccc <= 15) cccScore = 11;
+    else if (ccc <= 30) cccScore = 7;
+    else if (ccc <= 60) cccScore = 3;
+    const crMap = { 'No': 0, '1-3 months': 5, '3-6 months': 11, '6+ months': 15 };
+    const ptMap = { 'Never': 0, 'Sometimes': 5, 'Always': 10 };
+    const compMap = { 'No': 0, 'Mostly': 7, 'Always': 15 };
+    const planMap = { 'No': 0, 'Basic': 5, 'Detailed': 10 };
+    const knowMap = { 'No': 0, 'Roughly': 2, 'Exactly': 5 };
+    const revMap = { 'Never': 0, 'Quarterly': 5, 'Monthly': 10 };
+    const crScore = crMap[answers.cash_reserves] || 0;
+    const ptScore = ptMap[answers.profit_tracking] || 0;
+    const compScore = compMap[answers.compliance] || 0;
+    const planScore = planMap[answers.planning] || 0;
+    const knowScore = knowMap[answers.knowledge] || 0;
+    const revScore = revMap[answers.review_habits] || 0;
+    const total = pmScore + cccScore + crScore + ptScore + compScore + planScore + knowScore + revScore;
+    return {
+      total: Math.round(total * 10) / 10,
+      profitMargin: Math.round(profitMargin * 10) / 10, ccc: ccc,
+      breakdown: [
+        { label: 'Profit Margin', score: pmScore, max: 20 },
+        { label: 'Cash Flow Cycle', score: cccScore, max: 15 },
+        { label: 'Cash Reserves', score: crScore, max: 15 },
+        { label: 'Compliance', score: compScore, max: 15 },
+        { label: 'Profit Tracking', score: ptScore, max: 10 },
+        { label: 'Business Planning', score: planScore, max: 10 },
+        { label: 'Review Habits', score: revScore, max: 10 },
+        { label: 'Financial Knowledge', score: knowScore, max: 5 } ]
+    };
+  }
+
+  function showResults(scores) {
+    const wrap = document.getElementById('results-wrap');
+    wrap.style.padding = '24px 16px 0';
+    wrap.classList.add('show');
+    window.scrollTo({ top: wrap.offsetTop - 80, behavior: 'smooth' });
+    const total = scores.total;
+    const circ = 2 * Math.PI * 64;
+    const gaugeFill = document.getElementById('gauge-fill');
+    let gaugeColor = '#C9A227';
+    if (total >= 80) gaugeColor = '#4ADE80';
+    else if (total >= 60) gaugeColor = '#E8C050';
+    else if (total >= 40) gaugeColor = '#FCD34D';
+    else gaugeColor = '#FCA5A5';
+    gaugeFill.style.stroke = gaugeColor;
+    let displayed = 0;
+    const scoreEl = document.getElementById('result-score');
+    const increment = total / 60;
+    const countUp = setInterval(() => {
+      displayed = Math.min(displayed + increment, total);
+      scoreEl.textContent = Math.round(displayed);
+      if (displayed >= total) {
+        clearInterval(countUp);
+        scoreEl.textContent = total;
+        gaugeFill.style.strokeDashoffset = circ - (total / 100) * circ;
+      }
+    }, 25);
+    const badge = document.getElementById('result-level-badge');
+    const desc = document.getElementById('result-level-desc');
+    let cls, emoji, name, text;
+    if (total >= 80) { cls = 'level-champion'; emoji = '🏆'; name = 'Financial Champion';
+      text = 'Your business has a solid financial foundation and is ready for the next growth stage. Focus on scaling with confidence.'; }
+    else if (total >= 60) { cls = 'level-solid'; emoji = '✅'; name = 'Solid Foundation';
+      text = "You're on the right track! A few targeted improvements to cash flow and tracking will significantly boost your performance."; }
+    else if (total >= 40) { cls = 'level-attention'; emoji = '⚠️'; name = 'Needs Attention';
+      text = 'There are critical gaps in your financial health. Addressing these now will prevent bigger problems and unlock real growth.'; }
+    else { cls = 'level-risk'; emoji = '🚨'; name = 'High Risk — Act Now';
+      text = 'Your business faces significant financial vulnerabilities. Immediate expert guidance is strongly recommended before these escalate.'; }
+    badge.className = 'level-badge ' + cls;
+    badge.textContent = emoji + ' ' + name;
+    desc.textContent = text;
+    const pm = scores.profitMargin;
+    setMetric('pm', pm + '%', pm >= 20 ? 'status-green' : pm >= 10 ? 'status-amber' : 'status-red',
+      pm >= 20 ? '✓ Healthy margin' : pm >= 10 ? '↑ Room to grow' : '⚠ Below target');
+    const ccc = scores.ccc;
+    setMetric('ccc', ccc + ' days', ccc <= 15 ? 'status-green' : ccc <= 30 ? 'status-amber' : 'status-red',
+      ccc <= 15 ? '✓ Efficient cycle' : ccc <= 30 ? '↑ Can improve' : '⚠ Cash gap risk');
+    const crLabels = { 'No': 'None', '1-3 months': '1–3 Months', '3-6 months': '3–6 Months', '6+ months': '6+ Months' };
+    const crClass = { 'No': 'status-red', '1-3 months': 'status-amber', '3-6 months': 'status-green', '6+ months': 'status-green' };
+    const crStatus = { 'No': '🚨 Urgent risk', '1-3 months': '↑ Build more', '3-6 months': '✓ Good buffer', '6+ months': '✓ Excellent' };
+    setMetric('cr', crLabels[answers.cash_reserves] || '—', crClass[answers.cash_reserves] || '', crStatus[answers.cash_reserves] || '');
+    const compVal = answers.compliance;
+    setMetric('comp', compVal === 'Always' ? '100%' : compVal === 'Mostly' ? '70%' : '30%',
+      compVal === 'Always' ? 'status-green' : compVal === 'Mostly' ? 'status-amber' : 'status-red',
+      compVal === 'Always' ? '✓ Fully compliant' : compVal === 'Mostly' ? '↑ Tighten up' : '🚨 Penalty risk');
+    const bList = document.getElementById('breakdown-list');
+    bList.innerHTML = scores.breakdown.map(item => {
+      const pct = (item.score / item.max) * 100;
+      const barColor = pct >= 70 ? '#16A34A' : pct >= 40 ? '#D97706' : '#DC2626';
+      return '<div class="breakdown-item"><span class="breakdown-label">' + item.label + '</span>' +
+        '<div class="breakdown-bar-wrap"><div class="breakdown-bar" style="width:0%;background:' + barColor + '" data-width="' + pct + '%"></div></div>' +
+        '<span class="breakdown-score">' + item.score + '/' + item.max + '</span></div>';
+    }).join('');
+    setTimeout(() => {
+      document.querySelectorAll('.breakdown-bar').forEach(bar => { bar.style.width = bar.dataset.width; });
+    }, 400);
+    const recoList = document.getElementById('reco-list');
+    recoList.innerHTML = buildRecommendations(scores, answers).map(r =>
+      '<div class="reco-item"><div class="reco-icon ' + r.urgency + '">' + r.icon + '</div>' +
+      '<div class="reco-text"><strong>' + r.title + '</strong>' + r.desc + '</div></div>').join('');
+  }
+
+  function setMetric(key, value, cls, status) {
+    document.getElementById('metric-' + key).textContent = value;
+    document.getElementById('metric-' + key + '-status').className = 'metric-status ' + cls;
+    document.getElementById('metric-' + key + '-status').textContent = status;
+  }
+
+  function buildRecommendations(scores, ans) {
+    const recos = [];
+    if (scores.profitMargin < 10) {
+      recos.push({ icon: '📉', urgency: 'reco-icon-urgent', title: 'Improve Your Profit Margins Urgently',
+        desc: "Your margin is below 10% — review your pricing strategy and cost structure. A CA can identify where you're losing money." });
+    } else if (scores.profitMargin < 20) {
+      recos.push({ icon: '📊', urgency: 'reco-icon-warn', title: 'Optimise Your Pricing & Costs',
+        desc: "There's room to grow your margin above 20%. Identify your most profitable products/services and focus resources there." });
+    }
+    if (scores.ccc > 30) {
+      recos.push({ icon: '⏱️', urgency: 'reco-icon-urgent', title: 'Shorten Your Cash Collection Cycle',
+        desc: 'Customers are taking too long to pay you. Introduce upfront deposits, stricter credit terms, and automated payment reminders.' });
+    }
+    if (ans.cash_reserves === 'No') {
+      recos.push({ icon: '🏦', urgency: 'reco-icon-urgent', title: 'Build Emergency Cash Reserves — Immediately',
+        desc: 'Having zero reserves is your biggest risk. Aim to set aside 10% of monthly revenue until you have 3 months of expenses saved.' });
+    } else if (ans.cash_reserves === '1-3 months') {
+      recos.push({ icon: '💰', urgency: 'reco-icon-warn', title: 'Grow Your Cash Buffer to 3–6 Months',
+        desc: 'You have a start — now systematically grow it. Set a standing monthly transfer to a dedicated reserve account.' });
+    }
+    if (ans.profit_tracking === 'Never') {
+      recos.push({ icon: '📋', urgency: 'reco-icon-urgent', title: 'Start Tracking Product / Service Profitability',
+        desc: "Without margin tracking per offering, you're flying blind. Implement a simple monthly P&L by product line immediately." });
+    } else if (ans.profit_tracking === 'Sometimes') {
+      recos.push({ icon: '📈', urgency: 'reco-icon-warn', title: 'Formalise Your Profit Tracking System',
+        desc: 'Informal tracking misses patterns. Set up a structured monthly review using proper accounting software.' });
+    }
+    if (ans.compliance === 'No') {
+      recos.push({ icon: '🚨', urgency: 'reco-icon-urgent', title: 'Fix Your GST / TDS Compliance Now',
+        desc: 'Late filings create penalties, interest, and legal exposure. This is the single most urgent issue to resolve with a CA.' });
+    } else if (ans.compliance === 'Mostly') {
+      recos.push({ icon: '⚖️', urgency: 'reco-icon-warn', title: 'Achieve 100% Compliance with a Filing Calendar',
+        desc: 'Even occasional delays add up in costs and risk. Set up a compliance calendar or outsource to a CA for zero misses.' });
+    }
+    if (ans.planning === 'No') {
+      recos.push({ icon: '🗺️', urgency: 'reco-icon-warn', title: 'Create a Financial Plan with Projections',
+        desc: 'A 12-month cash flow forecast helps you anticipate lean months, plan hiring, and approach banks with confidence.' });
+    }
+    if (ans.review_habits === 'Never') {
+      recos.push({ icon: '📅', urgency: 'reco-icon-urgent', title: 'Schedule Monthly Financial Reviews',
+        desc: 'Businesses that review financials monthly are 3× more likely to catch problems early. Block 2 hours every month end.' });
+    } else if (ans.review_habits === 'Quarterly') {
+      recos.push({ icon: '🗓️', urgency: 'reco-icon-warn', title: 'Move to Monthly Financial Reviews',
+        desc: 'Quarterly reviews mean problems fester for 3 months. Shift to monthly reviews to stay proactive and in control.' });
+    }
+    if (ans.knowledge === 'No') {
+      recos.push({ icon: '🎓', urgency: 'reco-icon-ok', title: 'Learn Your Break-Even Point',
+        desc: 'Knowing break-even helps you make smarter pricing and volume decisions. Your CA can calculate and explain this for you in minutes.' });
+    }
+    if (scores.total >= 70) {
+      recos.push({ icon: '🚀', urgency: 'reco-icon-ok', title: "You're Ready — Consider Scaling Strategically",
+        desc: 'Your financial foundation is strong. Now is a great time to explore growth financing, new markets, or team expansion with CA support.' });
+    }
+    return recos.slice(0, 6);
+  }
+
+  function resetAssessment() {
+    currentStep = 0;
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.getElementById('results-wrap').classList.remove('show');
+    const area = document.getElementById('assessment-area');
+    if (area) area.style.display = 'block';
+    const card = document.getElementById('question-card');
+    card.style.display = 'block';
+    document.getElementById('progress-section').style.display = 'block';
+    document.getElementById('calculating').classList.remove('show');
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(0)';
+    document.getElementById('gauge-fill').style.strokeDashoffset = '402.12';
+    document.getElementById('result-score').textContent = '0';
+    renderQuestion(0, 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderQuestion(0, 1);
+  </script>
+  <script src="assets/js/premium.js" defer></script>
+</body>
+</html>

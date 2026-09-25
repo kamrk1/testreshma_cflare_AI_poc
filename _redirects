@@ -1,0 +1,50 @@
+# ── Netlify Redirects — CA Reshma CRM ───────────────────────────────
+#
+# All API calls go through /api proxy — the real GAS URL is never
+# exposed in browser source code. Netlify forwards server-side.
+#
+# HOW IT WORKS:
+#   Frontend calls:  /api?action=client_list
+#   Netlify sends:   https://script.google.com/.../exec?action=client_list
+#   Browser sees:    only /api — GAS URL is hidden
+#
+# DEPLOY: put this file in the ROOT of your Netlify site (same folder
+# as index.html, ca-workspace.html etc.)
+# ─────────────────────────────────────────────────────────────────────
+
+/api/*  https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec/:splat  200
+
+# Friendly URL for client portal
+/portal  /client-portal.html  200
+
+# Pune ITR landing — consolidate .html to canonical extensionless URL
+/online-itr-filing-pune.html  /online-itr-filing-pune  301!
+
+# Business ITR season pages — canonical extensionless URLs
+/business-itr-filing-satara.html         /business-itr-filing-satara         301!
+
+# Business ITR keyword aliases — every phrasing the CA's clients actually
+# type lands on the one canonical page. 301 so link equity consolidates
+# instead of splitting across near-duplicate URLs.
+/business-itr                            /business-itr-filing-satara         301!
+/business-itr-filing                     /business-itr-filing-satara         301!
+/business-it-return                      /business-itr-filing-satara         301!
+/business-income-tax-return              /business-itr-filing-satara         301!
+/business-balance-sheet                  /business-itr-filing-satara         301!
+/business-nil-return                     /business-itr-filing-satara         301!
+/business-itr-filing-pune                /business-itr-filing-satara         301!
+
+# Canonical consolidation — .html -> extensionless for indexable content pages
+/about.html                              /about                              301!
+/services.html                           /services                           301!
+/scorecard.html                          /scorecard                          301!
+/contact.html                            /contact                            301!
+/income-tax-satara.html                  /income-tax-satara                  301!
+/gst-services-satara.html                /gst-services-satara                301!
+/startup-company-registration-satara.html  /startup-company-registration-satara  301!
+/accounting-bookkeeping-satara.html      /accounting-bookkeeping-satara      301!
+/loan-project-report-satara.html         /loan-project-report-satara         301!
+/business-growth-satara.html             /business-growth-satara             301!
+
+# ITR Upload utility — separate GAS deployment
+/api-itr  https://script.google.com/macros/s/AKfycbzRc0zkURaa1TjC3f019edoop4onnvwiOgenJEdDstgKZ3Lli-0cx89tuDqby6aKlcY7w/exec  200
