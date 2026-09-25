@@ -96,6 +96,7 @@
       '.ca-ai-user{align-self:flex-end;background:linear-gradient(135deg,#C9A227,#E2B04A);color:#0D1B2A;font-weight:500;border-bottom-right-radius:6px}' +
       '.ca-ai-sources{font-size:11px;margin-top:4px;display:flex;flex-direction:column;gap:2px}' +
       '.ca-ai-sources a{color:#E8C050}' +
+      '.ca-ai-source-label{color:#94a3b8;cursor:default}' +
       '#ca-ai-form{padding:12px;border-top:1px solid rgba(226,176,74,.18);background:rgba(11,19,43,.65)}' +
       '#ca-ai-composer{display:flex;align-items:center;gap:6px;padding:4px 4px 4px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px}' +
       '#ca-ai-input{flex:1;border:none;background:transparent;padding:10px 4px;font-size:14px;outline:none;color:#F8F4EC;min-width:0;font-family:inherit}' +
@@ -122,13 +123,35 @@
     return b;
   }
 
+  function isRealUrl(url) {
+    return /^https?:\/\//i.test(url);
+  }
+
+  // Files added to AI Search via manual upload (not a live site crawl) only
+  // ever get a storage path as their "url" (e.g. "caresh-deploy/contact.html")
+  // — there's no real page to link to. Rendering that as a clickable <a>
+  // just looks like a broken/dead link. Turn it into a clean, non-clickable
+  // label instead: strip the folder prefix and extension, title-case it.
+  function formatSourceLabel(url) {
+    var name = url.split('/').pop() || url;
+    name = name.replace(/\.(html?|txt|md)$/i, '');
+    name = name.replace(/[-_]+/g, ' ');
+    name = name.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+    return name || url;
+  }
+
   function addSources(box, sources) {
     if (!sources || !sources.length) return;
     var wrap = el('div', { class: 'ca-ai-sources' });
     sources.forEach(function (s) {
       if (!s.url) return;
-      var a = el('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title || s.url);
-      wrap.appendChild(a);
+      if (isRealUrl(s.url)) {
+        var a = el('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.title || s.url);
+        wrap.appendChild(a);
+      } else {
+        var span = el('span', { class: 'ca-ai-source-label' }, s.title || formatSourceLabel(s.url));
+        wrap.appendChild(span);
+      }
     });
     box.appendChild(wrap);
     box.scrollTop = box.scrollHeight;
