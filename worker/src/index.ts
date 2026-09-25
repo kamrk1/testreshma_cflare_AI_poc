@@ -13,6 +13,7 @@ import {
   looksLikeBookingRequest,
   submitLead,
 } from "./lead";
+import { isSmallTalk, SMALL_TALK_REPLY } from "./smalltalk";
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -95,6 +96,13 @@ export default {
         sources: [],
         sessionId,
       });
+    }
+
+    // Pure acknowledgment/small talk ("ok", "thanks") has no question for
+    // retrieval to answer — skip straight to a canned reply rather than
+    // running search+generation and dragging along irrelevant "sources".
+    if (isSmallTalk(message)) {
+      return json({ reply: SMALL_TALK_REPLY, sources: [], sessionId });
     }
 
     // ── Normal grounded Q&A flow ──
