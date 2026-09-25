@@ -1,0 +1,72 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Shared skeleton for every site. Nothing site-specific lives here —
+  // all of that is in the per-site "env" block below plus that site's
+  // KV config entry. Adding a new site = one more "env.<slug>" block
+  // (copy the "careshmajadhav" block, rename it and its resource names)
+  // + one new KV namespace seeded via `npm run seed:config -- <slug>`.
+  "name": "site-ai-chat",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2026-09-20",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Serves this repo's existing static HTML/CSS/JS/images directly from
+  // the edge. Any request that matches a file here (about.html, /assets/...)
+  // is served without ever invoking the Worker. Only requests that don't
+  // match a static file (i.e. /api/chat) fall through to the Worker below,
+  // so the widget and the API are same-origin with zero extra config.
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash"
+  },
+
+  "observability": {
+    "enabled": true
+  },
+
+  "env": {
+    // ── POC / current site: CA Reshma Jadhav & Company ──────────────
+    // Deploy with: wrangler deploy --env careshmajadhav
+    // For this POC there is no `routes` block, so it deploys to the
+    // default `careshmajadhav-chat.<your-subdomain>.workers.dev`.
+    // Later, to move this same env onto the production domain, add:
+    //   "routes": [{ "pattern": "careshmajadhav.in/api/chat*", "zone_name": "careshmajadhav.in" }]
+    // and deploy the *actual* site to this same Worker (or keep the
+    // site on its current host and only move the API/widget over) —
+    // nothing else in this file needs to change.
+    "careshmajadhav": {
+      "name": "careshmajadhav-chat",
+      "vars": {
+        "SITE_SLUG": "careshmajadhav",
+        // Informational only — used inside the system prompt / links,
+        // NOT used for the same-origin security check (that is derived
+        // from the live request's own Host header, so it works
+        // unchanged on workers.dev today and on the real domain later).
+        "SITE_DOMAIN": "careshmajadhav.in",
+        "GATEWAY_ID": "careshmajadhav-gw",
+        "GENERATION_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "BOT_NAME_FALLBACK": "CA Reshma AI Assistant",
+        "ESCALATION_CONTACT_FALLBACK": "WhatsApp +91 81779 22977 (careshmajadhav@gmail.com)"
+      },
+      "kv_namespaces": [
+        { "binding": "CONFIG", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }
+      ],
+      "ai_search": [
+        // AI Search doesn't run locally — `remote: true` makes `wrangler dev`
+        // proxy this binding to the real, deployed instance instead of
+        // erroring or stubbing it out.
+        { "binding": "AI_SEARCH", "instance_name": "careshmajadhav-search", "remote": true }
+      ],
+      "ai": {
+        "binding": "AI"
+      },
+      "ratelimits": [
+        {
+          "name": "CHAT_RL",
+          "namespace_id": "1001",
+          "simple": { "limit": 20, "period": 60 }
+        }
+      ]
+    }
+  }
+}

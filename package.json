@@ -1,0 +1,19 @@
+{
+  "name": "careshmajadhav-ai-chat-poc",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --env careshmajadhav",
+    "deploy": "wrangler deploy --env careshmajadhav",
+    "typecheck": "tsc --noEmit",
+    "kv:create": "wrangler kv namespace create CONFIG --env careshmajadhav",
+    "seed:config": "node worker/test/seed-config.mjs",
+    "test:live": "node worker/test/run-tests.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260923.1",
+    "typescript": "^5.6.0",
+    "wrangler": "^4.0.0"
+  }
+}

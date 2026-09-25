@@ -12,7 +12,15 @@
 # as index.html, ca-workspace.html etc.)
 # ─────────────────────────────────────────────────────────────────────
 
-/api/*  https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec/:splat  200
+# NOTE (AI chat POC): this GAS proxy rule is not called by anything in this
+# repo — ca-workspace.html fetches the GAS URL directly (see APPS_SCRIPT_URL
+# in ca-workspace.html), it never fetches through /api/*. It's commented out
+# here because Cloudflare Workers Static Assets also parses this
+# `_redirects` file (Pages-style), and its wildcard would otherwise match
+# and swallow the new same-origin /api/chat* Worker route before the Worker
+# ever saw the request. Uncomment only if something starts relying on it —
+# and if so, scope it below /api/chat so it doesn't shadow the chat API.
+# /api/*  https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec/:splat  200
 
 # Friendly URL for client portal
 /portal  /client-portal.html  200
