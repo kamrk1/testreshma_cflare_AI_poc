@@ -223,5 +223,19 @@
     });
   </script>
   <script src="assets/js/premium.js" defer></script>
+  <script>
+    // Chat widget toggle: 'ai' = new Cloudflare AI Search assistant (/api/chat),
+    // 'oci' = existing PocketAI/OCI widget. Flip this one flag to switch back.
+    window.CA_CHAT_WIDGET = 'ai';
+  </script>
+  <script>
+    (function () {
+      var src = window.CA_CHAT_WIDGET === 'ai' ? 'assets/js/ai-chat-widget.js' : 'assets/js/chat-widget.js';
+      var s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      document.body.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
