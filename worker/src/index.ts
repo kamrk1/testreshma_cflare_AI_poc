@@ -15,6 +15,7 @@ import {
   submitLead,
 } from "./lead";
 import { matchSmallTalk } from "./smalltalk";
+import { getSearchQuery } from "./translate";
 
 function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), {
@@ -113,7 +114,14 @@ export default {
 
     // ── Normal grounded Q&A flow ──
     try {
-      const chunks = await searchSite(env.AI_SEARCH, message);
+      // The indexed content is English-only, so a Marathi/Hindi query is
+      // translated to English before retrieval — cross-lingual embedding
+      // match quality is the weakest link otherwise (a short, colloquial,
+      // mixed-script query can miss content that plainly exists). The
+      // answer is still generated from the original `message`, so the
+      // reply-in-the-user's-language instruction is unaffected.
+      const searchQuery = await getSearchQuery(env, message);
+      const chunks = await searchSite(env.AI_SEARCH, searchQuery);
       const sources = dedupeSources(chunks);
       const messages = buildMessages(siteConfig, chunks, history, message);
 
