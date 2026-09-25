@@ -3,8 +3,29 @@ import type { Env } from "./types";
 // Devanagari block covers both Hindi and Marathi.
 const DEVANAGARI_RE = /[ऀ-ॿ]/;
 
+// Romanized Marathi/Hindi ("Address kay ahe", "GST kaise hota hai") is
+// extremely common on Indian mobile keyboards and carries no non-Latin
+// script for DEVANAGARI_RE to catch. This is a curated allowlist of common
+// function/question words in each language's Roman transliteration —
+// imperfect (it's not a language-ID model), but it catches the pattern
+// that actually showed up in testing without flagging genuine English.
+const ROMANIZED_INDIC_WORDS = new Set([
+  // Marathi
+  "kay", "ahe", "aahe", "tumcha", "tumchi", "tumche", "tumhi", "kuthe", "kiti",
+  "karta", "karte", "kartat", "kasa", "kashi", "kasla", "kon", "konta",
+  "mahiti", "pahije", "milel", "lokeshan", "sanga", "denar",
+  // Hindi
+  "kya", "hai", "kaise", "kaha", "kahan", "kitna", "kitne", "aap", "kripya",
+  "karo", "hain", "kyun", "kaun", "chahiye", "batao", "bataye", "mujhe", "humein",
+]);
+
+function looksRomanizedIndic(text: string): boolean {
+  const tokens = text.toLowerCase().split(/[^a-z]+/).filter(Boolean);
+  return tokens.some((t) => ROMANIZED_INDIC_WORDS.has(t));
+}
+
 export function looksNonEnglish(text: string): boolean {
-  return DEVANAGARI_RE.test(text);
+  return DEVANAGARI_RE.test(text) || looksRomanizedIndic(text);
 }
 
 /**
