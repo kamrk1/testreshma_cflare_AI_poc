@@ -110,11 +110,26 @@ export default {
       // runtime. `gateway.skipCache` is confirmed in the installed
       // @cloudflare/workers-types (GatewayOptions) — required so multi-turn
       // chat is never served from the AI Gateway cache.
-      const aiResponse = (await env.AI.run(
+      const aiResult = await env.AI.run(
         env.GENERATION_MODEL,
         { messages, stream: true },
         { gateway: { id: env.GATEWAY_ID, skipCache: true } }
-      )) as unknown as ReadableStream;
+      );
+
+      // env.AI.run()'s "unknown model" overload types this as
+      // Record<string, unknown> and doesn't guarantee a stream at runtime
+      // either — a bad gateway/model id resolves to an error object rather
+      // than throwing. Checking this here (inside the try) is what lets a
+      // bad GATEWAY_ID/GENERATION_MODEL surface as a clean JSON error
+      // instead of an uncaught exception deep inside the stream's pull()
+      // callback, after the response has already started (which Cloudflare
+      // reports as the generic "Worker threw exception" Error 1101 page).
+      if (!(aiResult instanceof ReadableStream)) {
+        throw new Error(
+          `env.AI.run did not return a stream — got: ${JSON.stringify(aiResult).slice(0, 500)}`
+        );
+      }
+      const aiResponse = aiResult;
 
       // Re-emit only the text deltas from the model's own SSE stream as a
       // plain chunked text/plain body, so the widget doesn't need an SSE
@@ -158,26 +173,38 @@ function toPlainTextStream(aiStream: ReadableStream): ReadableStream {
 
   return new ReadableStream({
     async pull(controller) {
-      const { done, value } = await reader.read();
-      if (done) {
-        controller.close();
-        return;
-      }
-      buffered += decoder.decode(value, { stream: true });
-      const lines = buffered.split("\n");
-      buffered = lines.pop() ?? "";
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed.startsWith("data:")) continue;
-        const payload = trimmed.slice(5).trim();
-        if (payload === "[DONE]") continue;
-        try {
-          const parsed = JSON.parse(payload) as { response?: string };
-          if (parsed.response) controller.enqueue(encoder.encode(parsed.response));
-        } catch {
-          // Non-JSON keepalive line from the stream — ignore.
+      // Defense in depth: a mid-stream failure here (e.g. the upstream
+      // connection drops after the response already started) must not
+      // become an unhandled rejection — that's what produces Cloudflare's
+      // opaque "Worker threw exception" page with no diagnostic info. The
+      // main fix for the "bad gateway/model returns a non-stream" case is
+      // the instanceof check before this function is ever called; this
+      // catch is only for a genuine stream-read failure after that point.
+      try {
+        const { done, value } = await reader.read();
+        if (done) {
+          controller.close();
+          return;
         }
+        buffered += decoder.decode(value, { stream: true });
+        const lines = buffered.split("\n");
+        buffered = lines.pop() ?? "";
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("data:")) continue;
+          const payload = trimmed.slice(5).trim();
+          if (payload === "[DONE]") continue;
+          try {
+            const parsed = JSON.parse(payload) as { response?: string };
+            if (parsed.response) controller.enqueue(encoder.encode(parsed.response));
+          } catch {
+            // Non-JSON keepalive line from the stream — ignore.
+          }
+        }
+      } catch (err) {
+        console.error("stream read failed mid-response", err);
+        controller.error(err);
       }
     },
   });
