@@ -12,39 +12,65 @@
 # as index.html, ca-workspace.html etc.)
 # ─────────────────────────────────────────────────────────────────────
 
-/api/*  https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec/:splat  200
+# NOTE (AI chat POC): this GAS proxy rule is not called by anything in this
+# repo — ca-workspace.html fetches the GAS URL directly (see APPS_SCRIPT_URL
+# in ca-workspace.html), it never fetches through /api/*. It's commented out
+# here because Cloudflare Workers Static Assets also parses this
+# `_redirects` file (Pages-style), and its wildcard would otherwise match
+# and swallow the new same-origin /api/chat* Worker route before the Worker
+# ever saw the request. Uncomment only if something starts relying on it —
+# and if so, scope it below /api/chat so it doesn't shadow the chat API.
+# /api/*  https://script.google.com/macros/s/AKfycbxJdTaL6_6XrJcfFBFkFtp5tV3-vPUAwSnJfQdV1Xx93dJgo4gRmy8a1W0EALDgecn3/exec/:splat  200
 
 # Friendly URL for client portal
 /portal  /client-portal.html  200
 
+# NOTE (AI chat POC): Cloudflare's _redirects parser doesn't support
+# Netlify's trailing "!" force-redirect suffix — it read it as part of the
+# status code and rejected every rule below with "Valid status codes are
+# 200, 301, 302, 303, 307, or 308. Got 0." The "!" is dropped throughout
+# this file. Cloudflare's redirects are evaluated before falling through to
+# a matching static asset (unlike a plain fallthrough), so dropping "!"
+# does not change behavior — these still fire even though e.g. about.html
+# also exists as a literal file.
+
 # Pune ITR landing — consolidate .html to canonical extensionless URL
-/online-itr-filing-pune.html  /online-itr-filing-pune  301!
+/online-itr-filing-pune.html  /online-itr-filing-pune  301
 
 # Business ITR season pages — canonical extensionless URLs
-/business-itr-filing-satara.html         /business-itr-filing-satara         301!
+/business-itr-filing-satara.html         /business-itr-filing-satara         301
 
 # Business ITR keyword aliases — every phrasing the CA's clients actually
 # type lands on the one canonical page. 301 so link equity consolidates
 # instead of splitting across near-duplicate URLs.
-/business-itr                            /business-itr-filing-satara         301!
-/business-itr-filing                     /business-itr-filing-satara         301!
-/business-it-return                      /business-itr-filing-satara         301!
-/business-income-tax-return              /business-itr-filing-satara         301!
-/business-balance-sheet                  /business-itr-filing-satara         301!
-/business-nil-return                     /business-itr-filing-satara         301!
-/business-itr-filing-pune                /business-itr-filing-satara         301!
+/business-itr                            /business-itr-filing-satara         301
+/business-itr-filing                     /business-itr-filing-satara         301
+/business-it-return                      /business-itr-filing-satara         301
+/business-income-tax-return              /business-itr-filing-satara         301
+/business-balance-sheet                  /business-itr-filing-satara         301
+/business-nil-return                     /business-itr-filing-satara         301
+/business-itr-filing-pune                /business-itr-filing-satara         301
 
 # Canonical consolidation — .html -> extensionless for indexable content pages
-/about.html                              /about                              301!
-/services.html                           /services                           301!
-/scorecard.html                          /scorecard                          301!
-/contact.html                            /contact                            301!
-/income-tax-satara.html                  /income-tax-satara                  301!
-/gst-services-satara.html                /gst-services-satara                301!
-/startup-company-registration-satara.html  /startup-company-registration-satara  301!
-/accounting-bookkeeping-satara.html      /accounting-bookkeeping-satara      301!
-/loan-project-report-satara.html         /loan-project-report-satara         301!
-/business-growth-satara.html             /business-growth-satara             301!
+/about.html                              /about                              301
+/services.html                           /services                           301
+/scorecard.html                          /scorecard                          301
+/contact.html                            /contact                            301
+/income-tax-satara.html                  /income-tax-satara                  301
+/gst-services-satara.html                /gst-services-satara                301
+/startup-company-registration-satara.html  /startup-company-registration-satara  301
+/accounting-bookkeeping-satara.html      /accounting-bookkeeping-satara      301
+/loan-project-report-satara.html         /loan-project-report-satara         301
+/business-growth-satara.html             /business-growth-satara             301
 
-# ITR Upload utility — separate GAS deployment
-/api-itr  https://script.google.com/macros/s/AKfycbzRc0zkURaa1TjC3f019edoop4onnvwiOgenJEdDstgKZ3Lli-0cx89tuDqby6aKlcY7w/exec  200
+# NOTE (AI chat POC): disabled — same "200 proxy can only point to a
+# relative path" rejection as /api/* above, and this one IS actively used
+# (itr-upload.html POSTs to /api-itr). Cloudflare's _redirects can't hide
+# an external URL behind a 200 proxy the way Netlify's can; ported over,
+# ITR upload will 404 on this Cloudflare deployment until it's replaced
+# with a small Worker route that fetches the GAS URL server-side (same
+# pattern as /api/chat) or repointed at a plain external redirect (which
+# would expose the GAS URL in the browser, unlike today). Left commented
+# out rather than silently building that Worker route, since it's a real
+# design choice outside this POC's scope — flagged to the user.
+# /api-itr  https://script.google.com/macros/s/AKfycbzRc0zkURaa1TjC3f019edoop4onnvwiOgenJEdDstgKZ3Lli-0cx89tuDqby6aKlcY7w/exec  200

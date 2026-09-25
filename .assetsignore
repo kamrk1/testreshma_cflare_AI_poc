@@ -1,0 +1,13 @@
+# Files in this repo that are part of the Worker/tooling, not the
+# public static site — never upload these as servable static assets.
+worker/
+wrangler.jsonc
+package.json
+package-lock.json
+tsconfig.json
+node_modules/
+.wrangler/
+.git/
+.gitignore
+README-ai-chat.md
+TEST_RESULTS.md
