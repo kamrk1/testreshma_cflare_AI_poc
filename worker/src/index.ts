@@ -98,37 +98,55 @@ export default {
     }
 
     // ── Normal grounded Q&A flow ──
-    const chunks = await searchSite(env.AI_SEARCH, message);
-    const sources = dedupeSources(chunks);
-    const messages = buildMessages(siteConfig, chunks, history, message);
+    try {
+      const chunks = await searchSite(env.AI_SEARCH, message);
+      const sources = dedupeSources(chunks);
+      const messages = buildMessages(siteConfig, chunks, history, message);
 
-    // env.GENERATION_MODEL is a plain `string` (from wrangler vars), not a
-    // literal keyof AiModelList, so this resolves to the SDK's "unknown
-    // model" overload — which is why the result needs an explicit
-    // ReadableStream cast even though `stream: true` guarantees one at
-    // runtime. `gateway.skipCache` is confirmed in the installed
-    // @cloudflare/workers-types (GatewayOptions) — required so multi-turn
-    // chat is never served from the AI Gateway cache.
-    const aiResponse = (await env.AI.run(
-      env.GENERATION_MODEL,
-      { messages, stream: true },
-      { gateway: { id: env.GATEWAY_ID, skipCache: true } }
-    )) as unknown as ReadableStream;
+      // env.GENERATION_MODEL is a plain `string` (from wrangler vars), not a
+      // literal keyof AiModelList, so this resolves to the SDK's "unknown
+      // model" overload — which is why the result needs an explicit
+      // ReadableStream cast even though `stream: true` guarantees one at
+      // runtime. `gateway.skipCache` is confirmed in the installed
+      // @cloudflare/workers-types (GatewayOptions) — required so multi-turn
+      // chat is never served from the AI Gateway cache.
+      const aiResponse = (await env.AI.run(
+        env.GENERATION_MODEL,
+        { messages, stream: true },
+        { gateway: { id: env.GATEWAY_ID, skipCache: true } }
+      )) as unknown as ReadableStream;
 
-    // Re-emit only the text deltas from the model's own SSE stream as a
-    // plain chunked text/plain body, so the widget doesn't need an SSE
-    // parser. Sources travel out-of-band in a response header.
-    const plainTextStream = toPlainTextStream(aiResponse);
+      // Re-emit only the text deltas from the model's own SSE stream as a
+      // plain chunked text/plain body, so the widget doesn't need an SSE
+      // parser. Sources travel out-of-band in a response header.
+      const plainTextStream = toPlainTextStream(aiResponse);
 
-    return new Response(plainTextStream, {
-      headers: {
-        "content-type": "text/plain; charset=utf-8",
-        "x-chat-session-id": sessionId,
-        // HTTP header values must be Latin1 — encode in case a crawled
-        // page title contains non-ASCII (Marathi/Hindi) characters.
-        "x-chat-sources": encodeURIComponent(JSON.stringify(sources)),
-      },
-    });
+      return new Response(plainTextStream, {
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
+          "x-chat-session-id": sessionId,
+          // HTTP header values must be Latin1 — encode in case a crawled
+          // page title contains non-ASCII (Marathi/Hindi) characters.
+          "x-chat-sources": encodeURIComponent(JSON.stringify(sources)),
+        },
+      });
+    } catch (err) {
+      // Surface the real cause (visible in `wrangler tail` / dashboard Logs
+      // either way) in the JSON response too, so failures are diagnosable
+      // from the browser network tab without needing log access — this is
+      // a POC, not exposing anything secret, just AI Search/Workers AI/AI
+      // Gateway error text (e.g. "gateway not found", "instance not found").
+      console.error("chat generation failed", err);
+      const detail = err instanceof Error ? err.message : String(err);
+      return json(
+        {
+          error: `Something went wrong generating an answer. Please contact us: ${siteConfig.escalationContact}`,
+          detail,
+          sessionId,
+        },
+        502
+      );
+    }
   },
 };
 
