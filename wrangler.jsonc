@@ -55,7 +55,7 @@
         // AI Search doesn't run locally — `remote: true` makes `wrangler dev`
         // proxy this binding to the real, deployed instance instead of
         // erroring or stubbing it out.
-        { "binding": "AI_SEARCH", "instance_name": "careshmajadhav-search", "remote": true }
+        { "binding": "AI_SEARCH", "instance_name": "careshmajadhav-search1", "remote": true }
       ],
       "ai": {
         "binding": "AI"
