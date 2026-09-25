@@ -194,6 +194,18 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
+    /* On shorter/wider windows (common with browser chrome on laptops),
+       the hero's full padding + spacing pushed the CTA row and scroll cue
+       to or past the bottom edge. Tighten vertical rhythm below a height
+       threshold rather than changing the design on normal screens. */
+    @media (max-height: 820px) {
+      .hero { padding: 4.5rem 1.25rem 2.5rem; }
+      .hero-badge { margin-bottom: 1.1rem; }
+      .hero h1 { margin-bottom: 0.85rem; }
+      .hero-links { margin-top: 1.5rem; }
+      .scroll-cue { margin-top: 1.75rem; }
+    }
     
     .btn {
       background: linear-gradient(135deg, var(--accent), var(--accent-light));
